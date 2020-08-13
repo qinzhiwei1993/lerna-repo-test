@@ -1,6 +1,6 @@
 {
-  "name": "lerna2-test",
-  "version": "0.0.7-alpha.0",
+  "name": "@qinzhiwei1993/lerna2",
+  "version": "0.0.6-alpha.0",
   "description": "> TODO: description",
   "author": "qinzhiwei1993 <384579070@qq.com>",
   "homepage": "",
@@ -14,7 +14,8 @@
     "lib"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
