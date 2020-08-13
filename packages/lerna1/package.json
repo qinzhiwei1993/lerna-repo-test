@@ -25,5 +25,11 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "a9e5d2f646f2a13f481b810873c1d1dd908e9248"
+  "gitHead": "a9e5d2f646f2a13f481b810873c1d1dd908e9248",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "lodash": "^4.17.19",
+    "moment": "^2.27.0",
+    "qrcode": "^1.4.4"
+  }
 }
