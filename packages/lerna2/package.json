@@ -1,5 +1,5 @@
 {
-  "name": "@qinzhiwei/lerna2",
+  "name": "@qinzhiwei1993/lerna2",
   "version": "0.0.4-alpha.0",
   "description": "> TODO: description",
   "author": "qinzhiwei1993 <384579070@qq.com>",
@@ -19,5 +19,5 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "4b8e9b665ef4f5ffc448898a5b93be99d4a1e5d5"
+  "gitHead": "7d9ca5fd3111041b131c3789b01577bc808e2539"
 }
