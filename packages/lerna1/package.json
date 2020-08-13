@@ -1,5 +1,5 @@
 {
-  "name": "@qinzhiwei1993/lerna1",
+  "name": "lerna1-test",
   "version": "0.0.6-alpha.0",
   "description": "lerna 1",
   "keywords": [
@@ -24,5 +24,5 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "063648c26c8f01e239ade1fcd6bbd7abe530da26"
+  "gitHead": "a9e5d2f646f2a13f481b810873c1d1dd908e9248"
 }
