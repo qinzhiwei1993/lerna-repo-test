@@ -4,4 +4,5 @@ module.exports = lerna2;
 
 function lerna2() {
     // TODO
+    console.log('lerna2')
 }
