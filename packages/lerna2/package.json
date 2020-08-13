@@ -4,7 +4,7 @@
   "description": "> TODO: description",
   "author": "qinzhiwei1993 <384579070@qq.com>",
   "homepage": "",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/lerna2.js",
   "directories": {
     "lib": "lib",
@@ -18,5 +18,6 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
-  }
+  },
+  "gitHead": "cfdcb0838e9a63bd4ce7d8517f99374d98706f2e"
 }
