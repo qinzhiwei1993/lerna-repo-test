@@ -1,0 +1,32 @@
+{
+  "name": "@qinzhiwei1993/l-cli",
+  "version": "0.0.9-alpha.0",
+  "description": "> TODO: description",
+  "author": "qinzhiwei1993 <384579070@qq.com>",
+  "homepage": "https://github.com/qinzhiwei1993/lerna-repo-test#readme",
+  "license": "ISC",
+  "main": "lib/l-cli.js",
+  "bin": {
+    "l-cli": "bin/l-cli.js"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://npm-corp.speiyou.cn/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qinzhiwei1993/lerna-repo-test.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/qinzhiwei1993/lerna-repo-test/issues"
+  }
+}
