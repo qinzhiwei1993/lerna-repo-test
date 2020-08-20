@@ -14,7 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "http://npm-corp.speiyou.cn/",
+    "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
   "scripts": {
