@@ -1,0 +1,23 @@
+{
+  "name": "@qinzhiwei1993/lerna-independent1",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "qinzhiwei1993 <384579070@qq.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/lerna-independent1.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://npm-corp.speiyou.cn/",
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
