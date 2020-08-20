@@ -1,0 +1,16 @@
+0 silly argv { _: [ 'create' ],
+0 silly argv   'es-module': true,
+0 silly argv   esModule: true,
+0 silly argv   tag: 'tag-test',
+0 silly argv   dependencies: [ '[moment,lodash]' ],
+0 silly argv   lernaVersion: '3.22.1',
+0 silly argv   '$0': 'lerna',
+0 silly argv   name: 'bintest' }
+1 notice cli v3.22.1
+2 verbose rootPath /Users/qinzhiwei/IT/git/learn/lerna
+3 error Error: Invalid tag name "[moment,lodash]": Tags may not have any characters that encodeURIComponent encodes.
+3 error     at invalidTagName (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/npm-package-arg/npa.js:91:15)
+3 error     at fromRegistry (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/npm-package-arg/npa.js:296:13)
+3 error     at resolve (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/npm-package-arg/npa.js:81:12)
+3 error     at npa (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/npm-package-arg/npa.js:52:10)
+3 error     at pReduce (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/@lerna/create/index.js:273:24)

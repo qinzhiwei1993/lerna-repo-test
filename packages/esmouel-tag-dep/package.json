@@ -1,22 +1,21 @@
 {
-  "name": "@qinzhiwei1993/l-cli",
+  "name": "@qinzhiwei1993/esmouel-tag-dep",
   "version": "0.0.9-alpha.0",
   "description": "> TODO: description",
   "author": "qinzhiwei1993 <384579070@qq.com>",
   "homepage": "https://github.com/qinzhiwei1993/lerna-repo-test#readme",
   "license": "ISC",
-  "main": "lib/l-cli.js",
-  "bin": {
-    "l-cli": "bin/l-cli.js"
-  },
+  "main": "dist/esmouel-tag-dep.js",
+  "module": "dist/esmouel-tag-dep.module.js",
   "directories": {
-    "lib": "lib",
+    "lib": "dist",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "publishConfig": {
+    "tag": "tag-test",
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
@@ -26,6 +25,10 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.19",
+    "moment": "^2.27.0"
   },
   "bugs": {
     "url": "https://github.com/qinzhiwei1993/lerna-repo-test/issues"

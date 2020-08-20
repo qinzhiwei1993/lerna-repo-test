@@ -1,19 +1,20 @@
 {
-  "name": "@qinzhiwei1993/l-cli",
+  "name": "@qinzhiwei1993/bintest",
   "version": "0.0.9-alpha.0",
   "description": "> TODO: description",
   "author": "qinzhiwei1993 <384579070@qq.com>",
   "homepage": "https://github.com/qinzhiwei1993/lerna-repo-test#readme",
   "license": "ISC",
-  "main": "lib/l-cli.js",
+  "main": "lib/bintest.js",
   "bin": {
-    "l-cli": "bin/l-cli.js"
+    "testB": "bin/testB"
   },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
+    "bin",
     "lib"
   ],
   "publishConfig": {
@@ -27,7 +28,11 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
+  "dependencies": {
+    "yargs": "^15.4.1"
+  },
   "bugs": {
     "url": "https://github.com/qinzhiwei1993/lerna-repo-test/issues"
-  }
+  },
+  "module": "dist/bintest.module.js"
 }
