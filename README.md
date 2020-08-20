@@ -104,3 +104,5 @@ Workspaces can only be enabled in private projects.
 - --registry      Configure the package's publishConfig.registry  [字符串]
 - --tag           Configure the package's publishConfig.tag [字符串]
 - -y, --yes       Skip all prompts, accepting default values [布尔]
+
+#### lerna version
