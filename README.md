@@ -165,11 +165,12 @@ Workspaces can only be enabled in private projects.
 - [`--json`](#--json)
 - [`--ndjson`](#--ndjson)
 - [`-a`, `--all`](#--all)
-- [`-l`, `--long`](#--long)
+- [`-l`, `--long`](#--long) 
 - [`-p`, `--parseable`](#--parseable)
 - [`--toposort`](#--toposort)
 - [`--graph`](#--graph)
 
+所有的过滤选项都支持
 
 ##### `--json`
 
@@ -192,4 +193,110 @@ $ lerna ls --json
   }
 ]
 ```
+
+#### `--ndjson`
+
+以[newline-delimited JSON](http://ndjson.org/)展示信息
+
+```sh
+$ lerna ls --ndjson
+{"name":"package-1","version":"1.0.0","private":false,"location":"/path/to/packages/pkg-1"}
+{"name":"package-2","version":"1.0.0","private":false,"location":"/path/to/packages/pkg-2"}
+```
+
+#### `--all`
+
+Alias: `-a`
+
+显示默认隐藏的private package
+
+```sh
+$ lerna ls --all
+package-1
+package-2
+package-3 (private)
+```
+
+#### `--long`
+
+Alias: `-l`
+
+显示包的版本、位置、名称
+
+```sh
+$ lerna ls --long
+package-1 v1.0.1 packages/pkg-1
+package-2 v1.0.2 packages/pkg-2
+
+$ lerna ls -la
+package-1 v1.0.1 packages/pkg-1
+package-2 v1.0.2 packages/pkg-2
+package-3 v1.0.3 packages/pkg-3 (private)
+```
+
+#### `--parseable`
+
+Alias: `-p`
+
+显示包的绝对路径
+
+In `--long` output, each line is a `:`-separated list: `<fullpath>:<name>:<version>[:flags..]`
+
+```sh
+$ lerna ls --parseable
+/path/to/packages/pkg-1
+/path/to/packages/pkg-2
+
+$ lerna ls -pl
+/path/to/packages/pkg-1:package-1:1.0.1
+/path/to/packages/pkg-2:package-2:1.0.2
+
+$ lerna ls -pla
+/path/to/packages/pkg-1:package-1:1.0.1
+/path/to/packages/pkg-2:package-2:1.0.2
+/path/to/packages/pkg-3:package-3:1.0.3:PRIVATE
+```
+
+#### `--toposort`
+
+按照拓扑顺序(dependencies before dependents)对包进行排序，而不是按目录对包进行词法排序。
+
+```sh
+$ json dependencies <packages/pkg-1/package.json
+{
+  "pkg-2": "file:../pkg-2"
+}
+
+$ lerna ls --toposort
+package-2
+package-1
+```
+
+#### `--graph`
+
+将依赖关系图显示为JSON格式的邻接表 [adjacency list](https://en.wikipedia.org/wiki/Adjacency_list).
+
+```sh
+$ lerna ls --graph
+{
+  "pkg-1": [
+    "pkg-2"
+  ],
+  "pkg-2": []
+}
+
+$ lerna ls --graph --all
+{
+  "pkg-1": [
+    "pkg-2"
+  ],
+  "pkg-2": [
+    "pkg-3"
+  ],
+  "pkg-3": [
+    "pkg-2"
+  ]
+}
+```
+
 #### lerna version
