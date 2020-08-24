@@ -134,9 +134,21 @@ Workspaces can only be enabled in private projects.
 - --include-dependencies 启动命令式包含所有传递的依赖项，无视 --scope, --ignore, or --since [布尔] ?
 - --include-merged-tags 在使用—since 运行命令时，包含来自合并分支的标记 [布尔] ?
 
+
+
+#### [lerna link](https://github.com/lerna/lerna/tree/master/commands/link#readme)
+
+将本地相互依赖的package相互连接。例如lerna1依赖lerna2，且版本号刚好为本地的lerna2，那么会在lerna1下node_modules中建立软连指向lerna2
+
+##### Command Options
+
+- --force-local 无论本地package是否满足版本需求，都链接本地的
+
+
 ```json
+// 指定软链到package的特定目录
 "publishConfig": {
-    "directory": "dist" // bootstrap的时候软连的就是package下的dist目录 package-1/dist => node_modules/package-1
+    "directory": "dist" // bootstrap的时候软链package下的dist目录 package-1/dist => node_modules/package-1
   }
 ```
 
