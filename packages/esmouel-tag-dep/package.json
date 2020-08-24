@@ -17,7 +17,8 @@
   "publishConfig": {
     "tag": "tag-test",
     "registry": "https://registry.npmjs.org/",
-    "access": "public"
+    "access": "public",
+    "directory": "dist"
   },
   "repository": {
     "type": "git",

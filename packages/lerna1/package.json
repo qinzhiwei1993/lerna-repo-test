@@ -30,6 +30,7 @@
     "jquery": "^3.5.1",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",
-    "qrcode": "^1.4.4"
+    "qrcode": "^1.4.4",
+    "@qinzhiwei1993/esmouel-tag-dep": "0.0.10-alpha.0"
   }
 }
