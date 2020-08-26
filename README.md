@@ -338,7 +338,22 @@ $ lerna ls --graph --all
 }
 ```
 
-#### lerna version
+### `lerna version`
+
+
+### `lerna import`
+
+`lerna import <path-to-external-repository>`
+
+将现有的package收集到lerna项目中。可以保留之前的原始提交作者，日期和消息将保留。 
+
+注意：如果要在一个新的lerna中引入，必须至少有个commit
+
+#### Command Options
+
+- `--flatten` 处理合并冲突
+- `--dest` 指定引入包的目录
+- `--preserve-commit` 保持引入项目原有的提交者信息
 
 
 ### 过滤属性
