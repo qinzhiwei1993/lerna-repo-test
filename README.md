@@ -391,6 +391,21 @@ lerna不支持[过滤选项](https://www.npmjs.com/package/@lerna/filter-options
 移除所有packages下的node_modules，并不会移除根目录下的
 [`所有的过滤选项都支持`](#过滤选项)
 
+### [lerna diff](https://github.com/lerna/lerna/tree/master/commands/diff#readme)
+
+查看自上次发布（打tag）以来某个package或者所有package的变化
+
+```sh
+$ lerna diff [package]
+
+$ lerna diff
+# diff a specific package
+$ lerna diff package-name
+```
+
+> Similar to `lerna changed`. This command runs `git diff`.
+
+
 ### 过滤选项
 
 - `--scope` 为匹配到的 package 安装依赖 [字符串]
