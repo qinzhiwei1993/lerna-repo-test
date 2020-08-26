@@ -384,6 +384,12 @@ lerna不支持[过滤选项](https://www.npmjs.com/package/@lerna/filter-options
 - `--dest` 指定引入包的目录
 - `--preserve-commit` 保持引入项目原有的提交者信息
 
+### [lerna clean](https://github.com/lerna/lerna/tree/master/commands/clean#readme)
+
+`lerna clean`
+
+移除所有packages下的node_modules，并不会移除根目录下的
+[`所有的过滤选项都支持`](#过滤选项)
 
 ### 过滤选项
 
