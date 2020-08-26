@@ -340,7 +340,7 @@ $ lerna ls --graph --all
 
 ### [lerna changed](https://github.com/lerna/lerna/tree/master/commands/changed#readme)
 
-列出自上次发布以来本地发生变化的package
+列出自上次发布（打tag）以来本地发生变化的package
 
 
 **注意:** `lerna publish`和`lerna version`的`lerna.json`配置同样影响`lerna changed`。 例如 `command.publish.ignoreChanges`.
