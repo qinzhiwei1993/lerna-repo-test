@@ -102,44 +102,6 @@ Workspaces can only be enabled in private projects.
 - `--tag` Configure the package's publishConfig.tag [字符串]
 - `-y, --yes` Skip all prompts, accepting default values [布尔]
 
-### [lerna bootstrap](https://github.com/lerna/lerna/blob/master/commands/bootstrap#readme)
-
-将本地 package 链接在一起并安装依赖
-
-执行该命令式做了一下四件事：
-
-1.为每个 package 安装依赖 2.链接相互依赖的库到具体的目录，例如：如果 lerna1 下有 lerna2，且版本刚好为本地版本，那么会在 node_modules 中链接本地项目，如果版本不满足，需按正常依赖安装 3.在 bootstraped packages 中 执行 `npm run prepublish` 4.在 bootstraped packages 中 执行 `npm run prepare`
-
-#### Command Options
-
-- `--hoist` 匹配 [glob] 依赖 提升到根目录 [默认值: '**'], 包含可执行二进制文件的依赖项还是必须安装在当前 package 的 node_modules 下，以确保 npm 脚本的运行
-- `--nohoist` 和上面刚好相反 [字符串]
-- `--ignore-prepublish` 在 bootstraped packages 中不再运行 prepublish 生命周期中的脚本 [布尔]
-- `--ignore-scripts` 在 bootstraped packages 中不再运行任何生命周期中的脚本 [布尔]
-- `--npm-client` 使用的 npm 客户端(npm, yarn, pnpm, ...) [字符串]
-- `--registry` 为 npm 设置 registry [字符串]
-- `--strict` 在 bootstrap 的过程中不允许发出警告，避免花销更长的时间或者导致其他问题 [布尔]
-- `--use-workspaces` 启用 yarn 的 workspaces 模式 [布尔]
-- `--force-local` 无论版本范围是否匹配，强制本地同级链接 [布尔] ?
-- `--contents` 子目录用作任何链接的源。必须适用于所有包装 [字符串][默认值: .] ?
-
-
-
-### [lerna link](https://github.com/lerna/lerna/tree/master/commands/link#readme)
-
-将本地相互依赖的package相互连接。例如lerna1依赖lerna2，且版本号刚好为本地的lerna2，那么会在lerna1下node_modules中建立软连指向lerna2
-
-#### Command Options
-
-- --force-local 无论本地package是否满足版本需求，都链接本地的
-
-
-```json
-// 指定软链到package的特定目录
-"publishConfig": {
-    "directory": "dist" // bootstrap的时候软链package下的dist目录 package-1/dist => node_modules/package-1
-  }
-```
 
 ### [lerna add](https://github.com/lerna/lerna/tree/master/commands/add#readme)
 
@@ -186,6 +148,46 @@ lerna add module-1
 
 # Install babel-core in all modules
 lerna add babel-core
+```
+
+
+
+### [lerna bootstrap](https://github.com/lerna/lerna/blob/master/commands/bootstrap#readme)
+
+将本地 package 链接在一起并安装依赖
+
+执行该命令式做了一下四件事：
+
+1.为每个 package 安装依赖 2.链接相互依赖的库到具体的目录，例如：如果 lerna1 下有 lerna2，且版本刚好为本地版本，那么会在 node_modules 中链接本地项目，如果版本不满足，需按正常依赖安装 3.在 bootstraped packages 中 执行 `npm run prepublish` 4.在 bootstraped packages 中 执行 `npm run prepare`
+
+#### Command Options
+
+- `--hoist` 匹配 [glob] 依赖 提升到根目录 [默认值: '**'], 包含可执行二进制文件的依赖项还是必须安装在当前 package 的 node_modules 下，以确保 npm 脚本的运行
+- `--nohoist` 和上面刚好相反 [字符串]
+- `--ignore-prepublish` 在 bootstraped packages 中不再运行 prepublish 生命周期中的脚本 [布尔]
+- `--ignore-scripts` 在 bootstraped packages 中不再运行任何生命周期中的脚本 [布尔]
+- `--npm-client` 使用的 npm 客户端(npm, yarn, pnpm, ...) [字符串]
+- `--registry` 为 npm 设置 registry [字符串]
+- `--strict` 在 bootstrap 的过程中不允许发出警告，避免花销更长的时间或者导致其他问题 [布尔]
+- `--use-workspaces` 启用 yarn 的 workspaces 模式 [布尔]
+- `--force-local` 无论版本范围是否匹配，强制本地同级链接 [布尔] ?
+- `--contents` 子目录用作任何链接的源。必须适用于所有包装 [字符串][默认值: .] ?
+
+
+### [lerna link](https://github.com/lerna/lerna/tree/master/commands/link#readme)
+
+将本地相互依赖的package相互连接。例如lerna1依赖lerna2，且版本号刚好为本地的lerna2，那么会在lerna1下node_modules中建立软连指向lerna2
+
+#### Command Options
+
+- --force-local 无论本地package是否满足版本需求，都链接本地的
+
+
+```json
+// 指定软链到package的特定目录
+"publishConfig": {
+    "directory": "dist" // bootstrap的时候软链package下的dist目录 package-1/dist => node_modules/package-1
+  }
 ```
 
 
