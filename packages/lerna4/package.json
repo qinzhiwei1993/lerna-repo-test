@@ -25,5 +25,8 @@
   },
   "bugs": {
     "url": "https://github.com/qinzhiwei1993/lerna-repo-test/issues"
+  },
+  "dependencies": {
+    "vue": "^2.6.12"
   }
 }

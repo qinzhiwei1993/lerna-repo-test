@@ -152,6 +152,54 @@ Workspaces can only be enabled in private projects.
   }
 ```
 
+### [lerna add](https://github.com/lerna/lerna/tree/master/commands/add#readme)
+
+为匹配的package添加本地或者远程依赖，一次只能添加一个依赖
+
+```sh
+$ lerna add <package>[@version] [--dev] [--exact] [--peer]
+```
+
+运行该命令时做的事情:
+
+1. 为匹配到的package添加依赖
+2. 更改每个package下的package.json中的依赖项属性
+
+
+#### Command Options
+
+以下几个选项的含义和`npm install`时一致
+- `--dev`
+- `--exact`
+- `--peer`
+- `--registry <url>`
+- `--no-bootstrap`  跳过 `lerna bootstrap`，只在更改对应的package的package.json中的属性
+
+[所有的过滤选项都支持](https://www.npmjs.com/package/@lerna/filter-options)
+
+## Examples
+
+```sh
+# Adds the module-1 package to the packages in the 'prefix-' prefixed folders
+lerna add module-1 packages/prefix-*
+
+# Install module-1 to module-2
+lerna add module-1 --scope=module-2
+
+# Install module-1 to module-2 in devDependencies
+lerna add module-1 --scope=module-2 --dev
+
+# Install module-1 to module-2 in peerDependencies
+lerna add module-1 --scope=module-2 --peer
+
+# Install module-1 in all modules except module-1
+lerna add module-1
+
+# Install babel-core in all modules
+lerna add babel-core
+```
+
+
 ### [lerna list](https://github.com/lerna/lerna/tree/master/commands/list#readme)
 
 #### list子命令
@@ -170,7 +218,7 @@ Workspaces can only be enabled in private projects.
 - [`--toposort`](#--toposort)
 - [`--graph`](#--graph)
 
-所有的过滤选项都支持
+[所有的过滤选项都支持](https://www.npmjs.com/package/@lerna/filter-options)
 
 ##### `--json`
 

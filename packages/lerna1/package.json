@@ -27,10 +27,11 @@
   },
   "gitHead": "a9e5d2f646f2a13f481b810873c1d1dd908e9248",
   "dependencies": {
+    "@qinzhiwei1993/esmouel-tag-dep": "0.0.9-alpha.0",
     "jquery": "^3.5.1",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",
     "qrcode": "^1.4.4",
-    "@qinzhiwei1993/esmouel-tag-dep": "0.0.9-alpha.0"
+    "vue": "^2.6.12"
   }
 }
