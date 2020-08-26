@@ -89,18 +89,18 @@ Workspaces can only be enabled in private projects.
 
 创建一个 packcage
 
-- --access When using a scope, set publishConfig.access value [可选值: "public", "restricted"][默认值: public]
-- --bin Package has an executable. Customize with --bin <executableName>
-- --description Package description [字符串]
-- --dependencies A list of package dependencies [数组]
-- --es-module Initialize a transpiled ES Module [布尔]
-- --homepage The package homepage, defaulting to a subpath of the root pkg.homepage [字符串]
-- --keywords A list of package keywords [数组]
-- --license The desired package license (SPDX identifier) [字符串][默认值: isc]
-- --private Make the new package private, never published to any external registry [布尔]
-- --registry Configure the package's publishConfig.registry [字符串]
-- --tag Configure the package's publishConfig.tag [字符串]
-- -y, --yes Skip all prompts, accepting default values [布尔]
+- `--access` When using a scope, set publishConfig.access value [可选值: "public", "restricted"][默认值: public]
+- `--bin` Package has an executable. Customize with --bin <executableName>
+- `--description` Package description [字符串]
+- `--dependencies` A list of package dependencies [数组]
+- `--es-module` Initialize a transpiled ES Module [布尔]
+- `--homepage` The package homepage, defaulting to a subpath of the root pkg.homepage [字符串]
+- `--keywords` A list of package keywords [数组]
+- `--license` The desired package license (SPDX identifier) [字符串][默认值: isc]
+- `--private` Make the new package private, never published to any external registry [布尔]
+- `--registry` Configure the package's publishConfig.registry [字符串]
+- `--tag` Configure the package's publishConfig.tag [字符串]
+- `-y, --yes` Skip all prompts, accepting default values [布尔]
 
 ### [lerna bootstrap](https://github.com/lerna/lerna/blob/master/commands/bootstrap#readme)
 
@@ -112,27 +112,16 @@ Workspaces can only be enabled in private projects.
 
 #### Command Options
 
-- --hoist 匹配 [glob] 依赖 提升到根目录 [默认值: '**'], 包含可执行二进制文件的依赖项还是必须安装在当前 package 的 node_modules 下，以确保 npm 脚本的运行
-- --nohoist 和上面刚好相反 [字符串]
-- --ignore-prepublish 在 bootstraped packages 中不再运行 prepublish 生命周期中的脚本 [布尔]
-- --ignore-scripts 在 bootstraped packages 中不再运行任何生命周期中的脚本 [布尔]
-- --npm-client 使用的 npm 客户端(npm, yarn, pnpm, ...) [字符串]
-- --registry 为 npm 设置 registry [字符串]
-- --strict 在 bootstrap 的过程中不允许发出警告，避免花销更长的时间或者导致其他问题 [布尔]
-- --use-workspaces 启用 yarn 的 workspaces 模式 [布尔]
-- --force-local 无论版本范围是否匹配，强制本地同级链接 [布尔] ?
-- --contents 子目录用作任何链接的源。必须适用于所有包装 [字符串][默认值: .] ?
-
-#### Filter Options
-
-- --scope 为匹配到的 package 安装依赖 [字符串]
-- --ignore 和上面正相反 [字符串]
-- --no-private 排除 private 的 packcage
-- --since 包含从指定的[ref]依赖改变的 packages，如果没有[ref]，默认是最近的 tag ?
-- --exclude-dependents 当使用—since 运行命令时，排除所有传递依赖项，覆盖默认的“changed”算法 [布尔] ?
-- --include-dependents 启动命令式包含所有传递的依赖项，无视 --scope, --ignore, or --since [布尔] ?
-- --include-dependencies 启动命令式包含所有传递的依赖项，无视 --scope, --ignore, or --since [布尔] ?
-- --include-merged-tags 在使用—since 运行命令时，包含来自合并分支的标记 [布尔] ?
+- `--hoist` 匹配 [glob] 依赖 提升到根目录 [默认值: '**'], 包含可执行二进制文件的依赖项还是必须安装在当前 package 的 node_modules 下，以确保 npm 脚本的运行
+- `--nohoist` 和上面刚好相反 [字符串]
+- `--ignore-prepublish` 在 bootstraped packages 中不再运行 prepublish 生命周期中的脚本 [布尔]
+- `--ignore-scripts` 在 bootstraped packages 中不再运行任何生命周期中的脚本 [布尔]
+- `--npm-client` 使用的 npm 客户端(npm, yarn, pnpm, ...) [字符串]
+- `--registry` 为 npm 设置 registry [字符串]
+- `--strict` 在 bootstrap 的过程中不允许发出警告，避免花销更长的时间或者导致其他问题 [布尔]
+- `--use-workspaces` 启用 yarn 的 workspaces 模式 [布尔]
+- `--force-local` 无论版本范围是否匹配，强制本地同级链接 [布尔] ?
+- `--contents` 子目录用作任何链接的源。必须适用于所有包装 [字符串][默认值: .] ?
 
 
 
@@ -175,7 +164,7 @@ $ lerna add <package>[@version] [--dev] [--exact] [--peer]
 - `--registry <url>`
 - `--no-bootstrap`  跳过 `lerna bootstrap`，只在更改对应的package的package.json中的属性
 
-[所有的过滤选项都支持](https://www.npmjs.com/package/@lerna/filter-options)
+[`所有的过滤选项都支持`](#过滤属性)
 
 ## Examples
 
@@ -218,7 +207,7 @@ lerna add babel-core
 - [`--toposort`](#--toposort)
 - [`--graph`](#--graph)
 
-[所有的过滤选项都支持](https://www.npmjs.com/package/@lerna/filter-options)
+[`所有的过滤选项都支持`](#过滤属性)
 
 ##### `--json`
 
@@ -348,3 +337,15 @@ $ lerna ls --graph --all
 ```
 
 #### lerna version
+
+
+### 过滤属性
+
+- `--scope` 为匹配到的 package 安装依赖 [字符串]
+- `--ignore` 和上面正相反 [字符串]
+- `--no-private` 排除 private 的 packcage
+- `--since` 包含从指定的[ref]依赖改变的 packages，如果没有[ref]，默认是最近的 tag ?
+- `--exclude-dependents` 当使用—since 运行命令时，排除所有传递依赖项，覆盖默认的“changed”算法 [布尔] ?
+- `--include-dependents` 启动命令式包含所有传递的依赖项，无视 --scope, --ignore, or --since [布尔] ?
+- `--include-dependencies` 启动命令式包含所有传递的依赖项，无视 --scope, --ignore, or --since [布尔] ?
+- `--include-merged-tags` 在使用—since 运行命令时，包含来自合并分支的标记 [布尔] ?
