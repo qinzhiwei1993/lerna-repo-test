@@ -341,7 +341,7 @@ $ lerna ls --graph --all
 ### `lerna version`
 
 
-### `lerna import`
+### [lerna import](https://github.com/lerna/lerna/tree/master/commands/import#readme)
 
 `lerna import <path-to-external-repository>`
 
