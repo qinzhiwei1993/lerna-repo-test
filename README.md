@@ -61,7 +61,7 @@ Workspaces can only be enabled in private projects.
 
 默认是 npm, 每个子 package 下都有自己的 node_modules，通过这样设置后，会把所有的依赖提升到顶层的 node_modules 中，并且在 node_modules 中链接本地的 package，便于调试
 
-注意：必须是 private 项目才可以开启 workspaces
+**注意**：必须是 private 项目才可以开启 workspaces
 
 ```json
 // package.json
@@ -126,7 +126,7 @@ $ lerna add <package>[@version] [--dev] [--exact] [--peer]
 - `--registry <url>`
 - `--no-bootstrap`  跳过 `lerna bootstrap`，只在更改对应的package的package.json中的属性
 
-[`所有的过滤选项都支持`](#过滤属性)
+[`所有的过滤选项都支持`](#过滤选项)
 
 ## Examples
 
@@ -209,7 +209,7 @@ lerna add babel-core
 - [`--toposort`](#--toposort)
 - [`--graph`](#--graph)
 
-[`所有的过滤选项都支持`](#过滤属性)
+[`所有的过滤选项都支持`](#过滤选项)
 
 ##### `--json`
 
@@ -338,6 +338,35 @@ $ lerna ls --graph --all
 }
 ```
 
+### [lerna changed](https://github.com/lerna/lerna/tree/master/commands/changed#readme)
+
+列出自上次发布以来本地发生变化的package
+
+
+**注意:** `lerna publish`和`lerna version`的`lerna.json`配置同样影响`lerna changed`。 例如 `command.publish.ignoreChanges`.
+
+#### Command Options
+
+`lerna changed` 支持 [`lerna ls`](https://github.com/lerna/lerna/tree/master/commands/list#options)的所有标记：
+
+- [`--json`](https://github.com/lerna/lerna/tree/master/commands/list#--json)
+- [`--ndjson`](https://github.com/lerna/lerna/tree/master/commands/list#--ndjson)
+- [`-a`, `--all`](https://github.com/lerna/lerna/tree/master/commands/list#--all)
+- [`-l`, `--long`](https://github.com/lerna/lerna/tree/master/commands/list#--long)
+- [`-p`, `--parseable`](https://github.com/lerna/lerna/tree/master/commands/list#--parseable)
+- [`--toposort`](https://github.com/lerna/lerna/tree/master/commands/list#--toposort)
+- [`--graph`](https://github.com/lerna/lerna/tree/master/commands/list#--graph)
+
+lerna不支持[过滤选项](https://www.npmjs.com/package/@lerna/filter-options), 因为`lerna version` or `lerna publish`不支持过滤选项.
+
+`lerna changed` 支持 [`lerna version`](https://github.com/lerna/lerna/tree/master/commands/version#options) (the others are irrelevant)的过滤选项：
+
+- [`--conventional-graduate`](https://github.com/lerna/lerna/tree/master/commands/version#--conventional-graduate).
+- [`--force-publish`](https://github.com/lerna/lerna/tree/master/commands/version#--force-publish).
+- [`--ignore-changes`](https://github.com/lerna/lerna/tree/master/commands/version#--ignore-changes).
+- [`--include-merged-tags`](https://github.com/lerna/lerna/tree/master/commands/version#--include-merged-tags).
+
+
 ### `lerna version`
 
 
@@ -347,7 +376,7 @@ $ lerna ls --graph --all
 
 将现有的package收集到lerna项目中。可以保留之前的原始提交作者，日期和消息将保留。 
 
-注意：如果要在一个新的lerna中引入，必须至少有个commit
+**注意**：如果要在一个新的lerna中引入，必须至少有个commit
 
 #### Command Options
 
@@ -356,7 +385,7 @@ $ lerna ls --graph --all
 - `--preserve-commit` 保持引入项目原有的提交者信息
 
 
-### 过滤属性
+### 过滤选项
 
 - `--scope` 为匹配到的 package 安装依赖 [字符串]
 - `--ignore` 和上面正相反 [字符串]
