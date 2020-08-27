@@ -22,6 +22,8 @@
   },
   "gitHead": "a9e5d2f646f2a13f481b810873c1d1dd908e9248",
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
     "jquery": "^3.5.1",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",

@@ -28,6 +28,8 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",
     "vue": "^2.6.12"

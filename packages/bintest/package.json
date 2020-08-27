@@ -29,6 +29,8 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
     "vue": "^2.6.12",
     "yargs": "^15.4.1"
   },

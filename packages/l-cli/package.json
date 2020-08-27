@@ -31,6 +31,8 @@
     "url": "https://github.com/qinzhiwei1993/lerna-repo-test/issues"
   },
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
     "vue": "^2.6.12"
   }
 }
