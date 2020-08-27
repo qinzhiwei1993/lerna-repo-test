@@ -20,7 +20,7 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "a9e5d2f646f2a13f481b810873c1d1dd908e9248",
+  "gitHead": "72d7b6b35b3121c1f60b40b14c4ef806cdd479b5",
   "dependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",

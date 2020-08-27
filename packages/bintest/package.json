@@ -37,5 +37,6 @@
   "bugs": {
     "url": "https://github.com/qinzhiwei1993/lerna-repo-test/issues"
   },
-  "module": "dist/bintest.module.js"
+  "module": "dist/bintest.module.js",
+  "gitHead": "72d7b6b35b3121c1f60b40b14c4ef806cdd479b5"
 }

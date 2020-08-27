@@ -17,8 +17,7 @@
   "publishConfig": {
     "tag": "tag-test",
     "registry": "https://registry.npmjs.org/",
-    "access": "public",
-    "directory": "dist"
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -36,5 +35,6 @@
   },
   "bugs": {
     "url": "https://github.com/qinzhiwei1993/lerna-repo-test/issues"
-  }
+  },
+  "gitHead": "72d7b6b35b3121c1f60b40b14c4ef806cdd479b5"
 }
