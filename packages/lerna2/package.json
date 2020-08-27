@@ -22,12 +22,15 @@
   },
   "gitHead": "72d7b6b35b3121c1f60b40b14c4ef806cdd479b5",
   "dependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.3",
     "jquery": "^3.5.1",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",
     "qrcode": "^1.4.4",
     "vue": "^2.6.12"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0"
   }
 }

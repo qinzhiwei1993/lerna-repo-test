@@ -29,8 +29,6 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.3",
     "vue": "^2.6.12",
     "yargs": "^15.4.1"
   },
@@ -38,5 +36,10 @@
     "url": "https://github.com/qinzhiwei1993/lerna-repo-test/issues"
   },
   "module": "dist/bintest.module.js",
-  "gitHead": "72d7b6b35b3121c1f60b40b14c4ef806cdd479b5"
+  "gitHead": "72d7b6b35b3121c1f60b40b14c4ef806cdd479b5",
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0"
+  }
 }

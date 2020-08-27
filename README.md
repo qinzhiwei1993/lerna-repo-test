@@ -406,6 +406,109 @@ $ lerna diff package-name
 > Similar to `lerna changed`. This command runs `git diff`.
 
 
+### [lerna exec](https://github.com/lerna/lerna/tree/master/commands/exec#readme)
+
+在每个package中执行任意命令，用波折号(`--`)分割命令语句
+
+#### 使用方式
+
+```sh
+$ lerna exec -- <command> [..args] # runs the command in all packages
+$ lerna exec -- rm -rf ./node_modules
+$ lerna exec -- protractor conf.js
+```
+
+可以通过`LERNA_PACKAGE_NAME`变量获取当前package名称：
+
+```sh
+$ lerna exec -- npm view \$LERNA_PACKAGE_NAME
+```
+
+也可以通过`LERNA_ROOT_PATH`获取根目录绝对路径：
+
+```sh
+$ lerna exec -- node \$LERNA_ROOT_PATH/scripts/some-script.js
+```
+
+#### Command Options
+
+[`所有的过滤选项都支持`](#过滤选项)
+
+```sh
+$ lerna exec --scope my-component -- ls -la
+```
+
+> 使用给定的数量进行并发执行(除非指定了 `--parallel`)。
+> 输出是经过管道过滤，存在不确定性。
+> 如果你希望命令一个接着一个执行，可以使用如下方式：
+
+```sh
+$ lerna exec --concurrency 1 -- ls -la
+```
+
+- `--stream`
+
+从子进程立即输出，前缀是包的名称。该方式允许交叉输出：
+
+```sh
+$ lerna exec --stream -- babel src -d lib
+```
+
+![lerna exec --stream -- babel src -d lib](./images/WX20200827-182918@2x.png)
+
+- `--parallel`
+
+Similar to `--stream`, but completely disregards concurrency and topological sorting, running a given command or script immediately in all matching packages with prefixed streaming output. This is the preferred flag for long-running processes such as `babel src -d lib -w` run over many packages.
+
+```sh
+$ lerna exec --parallel -- babel src -d lib -w
+```
+
+> **Note:** It is advised to constrain the scope of this command when using
+> the `--parallel` flag, as spawning dozens of subprocesses may be
+> harmful to your shell's equanimity (or maximum file descriptor limit,
+> for example). YMMV
+
+- `--no-bail`
+
+```sh
+# Run a command, ignoring non-zero (error) exit codes
+$ lerna exec --no-bail <command>
+```
+
+By default, `lerna exec` will exit with an error if _any_ execution returns a non-zero exit code.
+Pass `--no-bail` to disable this behavior, executing in _all_ packages regardless of exit code.
+
+- `--no-prefix`
+
+Disable package name prefixing when output is streaming (`--stream` _or_ `--parallel`).
+This option can be useful when piping results to other processes, such as editor plugins.
+
+- `--profile`
+
+Profiles the command executions and produces a performance profile which can be analyzed using DevTools in a
+Chromium-based browser (direct url: `devtools://devtools/bundled/devtools_app.html`). The profile shows a timeline of
+the command executions where each execution is assigned to an open slot. The number of slots is determined by the
+`--concurrency` option and the number of open slots is determined by `--concurrency` minus the number of ongoing
+operations. The end result is a visualization of the parallel execution of your commands.
+
+The default location of the performance profile output is at the root of your project.
+
+```sh
+$ lerna exec --profile -- <command>
+```
+
+> **Note:** Lerna will only profile when topological sorting is enabled (i.e. without `--parallel` and `--no-sort`).
+
+- `--profile-location <location>`
+
+You can provide a custom location for the performance profile output. The path provided will be resolved relative to the current working directory.
+
+```sh
+$ lerna exec --profile --profile-location=logs/profile/ -- <command>
+```
+
+
 ### 过滤选项
 
 - `--scope` 为匹配到的 package 安装依赖 [字符串]

@@ -27,8 +27,6 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.3",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",
     "vue": "^2.6.12"
@@ -36,5 +34,10 @@
   "bugs": {
     "url": "https://github.com/qinzhiwei1993/lerna-repo-test/issues"
   },
-  "gitHead": "72d7b6b35b3121c1f60b40b14c4ef806cdd479b5"
+  "gitHead": "72d7b6b35b3121c1f60b40b14c4ef806cdd479b5",
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0"
+  }
 }
