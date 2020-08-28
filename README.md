@@ -502,6 +502,46 @@ $ lerna exec --profile -- <command>
 $ lerna exec --profile --profile-location=logs/profile/ -- <command>
 ```
 
+### [lerna run](https://github.com/lerna/lerna/tree/master/commands/run#readme)
+
+在每个package中运行npm脚本
+
+#### 使用方法
+
+```sh
+$ lerna run <script> -- [..args] # runs npm run my-script in all packages that have it
+$ lerna run test
+$ lerna run build
+
+# watch all packages and transpile on change, streaming prefixed output
+$ lerna run --parallel watch
+```
+
+
+#### Command Options 
+
+- `--npm-client <client>`
+
+设置`npm`客户端，默认是`npm`
+
+```sh
+$ lerna run build --npm-client=yarn
+```
+
+也可以在`lerna.json`配置:
+
+```json
+{
+  "command": {
+    "run": {
+      "npmClient": "yarn"
+    }
+  }
+}
+```
+
+- 其余同`lerna exec`
+
 
 ### 过滤选项
 
