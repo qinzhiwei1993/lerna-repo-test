@@ -486,6 +486,8 @@ $ lerna exec --no-bail <command>
 
 生成一个json文件，可以在chrome浏览器（`devtools://devtools/bundled/devtools_app.html`）查看性能分析。通过配置`--concurrenty`可以开启固定数量的子进程数量
 
+![lerna exec --stream -- babel src -d lib](./images/WX20200828-175558@2x.png)
+
 ```sh
 $ lerna exec --profile -- <command>
 ```
