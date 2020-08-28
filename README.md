@@ -438,6 +438,8 @@ $ lerna exec -- node \$LERNA_ROOT_PATH/scripts/some-script.js
 $ lerna exec --scope my-component -- ls -la
 ```
 
+- --concurrenty
+
 > 使用给定的数量进行并发执行(除非指定了 `--parallel`)。
 > 输出是经过管道过滤，存在不确定性。
 > 如果你希望命令一个接着一个执行，可以使用如下方式：
@@ -458,16 +460,14 @@ $ lerna exec --stream -- babel src -d lib
 
 - `--parallel`
 
-Similar to `--stream`, but completely disregards concurrency and topological sorting, running a given command or script immediately in all matching packages with prefixed streaming output. This is the preferred flag for long-running processes such as `babel src -d lib -w` run over many packages.
+和`--stream`很像。但是完全忽略了并发性和排序，立即在所有匹配的包中运行给定的命令或脚本。适合长时间运行的进程。例如处于监听状态的`babel src -d lib -w`
 
 ```sh
 $ lerna exec --parallel -- babel src -d lib -w
 ```
 
-> **Note:** It is advised to constrain the scope of this command when using
-> the `--parallel` flag, as spawning dozens of subprocesses may be
-> harmful to your shell's equanimity (or maximum file descriptor limit,
-> for example). YMMV
+> **注意:** 建议使用命令式控制包的范围。
+> 因为过多的进程可能会损害`shell`的稳定。例如最大文件描述符限制
 
 - `--no-bail`
 
@@ -476,33 +476,25 @@ $ lerna exec --parallel -- babel src -d lib -w
 $ lerna exec --no-bail <command>
 ```
 
-By default, `lerna exec` will exit with an error if _any_ execution returns a non-zero exit code.
-Pass `--no-bail` to disable this behavior, executing in _all_ packages regardless of exit code.
+默认情况下，如果一但出现命令报错就会退费进程。使用该命令会禁止此行为，跳过改报错行为，继续执行其他命令
 
 - `--no-prefix`
 
-Disable package name prefixing when output is streaming (`--stream` _or_ `--parallel`).
-This option can be useful when piping results to other processes, such as editor plugins.
+在输出中不显示package的名称
 
 - `--profile`
 
-Profiles the command executions and produces a performance profile which can be analyzed using DevTools in a
-Chromium-based browser (direct url: `devtools://devtools/bundled/devtools_app.html`). The profile shows a timeline of
-the command executions where each execution is assigned to an open slot. The number of slots is determined by the
-`--concurrency` option and the number of open slots is determined by `--concurrency` minus the number of ongoing
-operations. The end result is a visualization of the parallel execution of your commands.
-
-The default location of the performance profile output is at the root of your project.
+生成一个json文件，可以在chrome浏览器（`devtools://devtools/bundled/devtools_app.html`）查看性能分析。通过配置`--concurrenty`可以开启固定数量的子进程数量
 
 ```sh
 $ lerna exec --profile -- <command>
 ```
 
-> **Note:** Lerna will only profile when topological sorting is enabled (i.e. without `--parallel` and `--no-sort`).
+> **注意:** 仅在启用拓扑排序时分析。不能和 `--parallel` and `--no-sort`一同使用。
 
 - `--profile-location <location>`
 
-You can provide a custom location for the performance profile output. The path provided will be resolved relative to the current working directory.
+设置分析文件存放位置
 
 ```sh
 $ lerna exec --profile --profile-location=logs/profile/ -- <command>

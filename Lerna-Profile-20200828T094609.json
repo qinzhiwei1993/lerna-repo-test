@@ -1,0 +1,58 @@
+[
+  {
+    "name": "@qinzhiwei1993/bintest",
+    "ph": "X",
+    "ts": 224943734439.41,
+    "pid": 1,
+    "tid": 0,
+    "dur": 670896.103
+  },
+  {
+    "name": "@qinzhiwei1993/esmouel-tag-dep",
+    "ph": "X",
+    "ts": 224943734464.131,
+    "pid": 1,
+    "tid": 1,
+    "dur": 847328.469
+  },
+  {
+    "name": "@qinzhiwei1993/l-cli",
+    "ph": "X",
+    "ts": 224944406208.842,
+    "pid": 1,
+    "tid": 0,
+    "dur": 651309.157
+  },
+  {
+    "name": "@qinzhiwei1993/lerna2",
+    "ph": "X",
+    "ts": 224944581924.946,
+    "pid": 1,
+    "tid": 1,
+    "dur": 634306.563
+  },
+  {
+    "name": "@qinzhiwei1993/lerna3",
+    "ph": "X",
+    "ts": 224945057601.713,
+    "pid": 1,
+    "tid": 0,
+    "dur": 631517.923
+  },
+  {
+    "name": "@qinzhiwei1993/lerna4",
+    "ph": "X",
+    "ts": 224945216310.671,
+    "pid": 1,
+    "tid": 1,
+    "dur": 642826.499
+  },
+  {
+    "name": "@qinzhiwei1993/lerna1",
+    "ph": "X",
+    "ts": 224945689187.717,
+    "pid": 1,
+    "tid": 0,
+    "dur": 608936.99
+  }
+]
