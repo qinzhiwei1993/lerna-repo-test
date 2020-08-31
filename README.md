@@ -662,15 +662,13 @@ lerna publish from-package --git-head ${CODEBUILD_RESOLVED_SOURCE_VERSION}
 
 ### `--graph-type <all|dependencies>`
 
-Set which kind of dependencies to use when building a package graph. The default value is `dependencies`, whereby only packages listed in the `dependencies` section of a package's `package.json` are included. Pass `all` to include both `dependencies` _and_ `devDependencies` when constructing the package graph and determining topological order.
-
-When using traditional peer + dev dependency pairs, this option should be configured to `all` so the peers are always published before their dependents.
+`npm`上构建`package dependencies`所采用的方式，默认是`dependencies`，只列出`dependencies`。`all`会列出`dependencies` 和 `devDependencies`
 
 ```sh
 lerna publish --graph-type all
 ```
 
-Configured via `lerna.json`:
+也可以通过`lerna.json`配置:
 
 ```json
 {
@@ -681,6 +679,8 @@ Configured via `lerna.json`:
   }
 }
 ```
+
+![lerna publish --graph-type all](./images/WX20200831-185905@2x.png)
 
 
 
