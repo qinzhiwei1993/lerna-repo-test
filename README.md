@@ -572,7 +572,58 @@ lerna publish from-package # 显示的发布当前版本在注册表中（regist
 
 - bump `from-package`
 
-与`from-git`关键字相似，除了要发布的软件包列表是通过检查每个package.json并确定注册表中是否没有任何软件包版本来确定的。 注册表中不存在的任何版本都将被发布。 当先前的`lerna publish`未能将所有程序包发布到注册表时，此功能很有用。
+与`from-git`关键字相似，除了要发布的软件包列表是通过检查每个`package.json`并确定注册表中是否没有任何软件包版本来确定的。 注册表中不存在的任何版本都将被发布。 当先前的`lerna publish`未能将所有程序包发布到注册表时，此功能很有用。
+
+
+#### Command Options
+
+`lerna publish`除了支持一下选项外，还支持`lerna version`的所有选项：
+
+- [`--canary`](#--canary)
+- [`--contents <dir>`](#--contents-dir)
+- [`--dist-tag <tag>`](#--dist-tag-tag)
+- [`--git-head <sha>`](#--git-head-sha)
+- [`--graph-type <all|dependencies>`](#--graph-type-alldependencies)
+- [`--ignore-scripts`](#--ignore-scripts)
+- [`--ignore-prepublish`](#--ignore-prepublish)
+- [`--legacy-auth`](#--legacy-auth)
+- [`--no-git-reset`](#--no-git-reset)
+- [`--no-granular-pathspec`](#--no-granular-pathspec)
+- [`--no-verify-access`](#--no-verify-access)
+- [`--otp`](#--otp)
+- [`--preid`](#--preid)
+- [`--pre-dist-tag <tag>`](#--pre-dist-tag-tag)
+- [`--registry <url>`](#--registry-url)
+- [`--tag-version-prefix`](#--tag-version-prefix)
+- [`--temp-tag`](#--temp-tag)
+- [`--yes`](#--yes)
+
+
+
+
+##### `--canary`
+
+```sh
+lerna publish --canary
+# 1.0.0 => 1.0.1-alpha.0+${SHA} of packages changed since the previous commit
+# a subsequent canary publish will yield 1.0.1-alpha.1+${SHA}, etc
+
+lerna publish --canary --preid beta
+# 1.0.0 => 1.0.1-beta.0+${SHA}
+
+# The following are equivalent:
+lerna publish --canary minor
+lerna publish --canary preminor
+# 1.0.0 => 1.1.0-alpha.0+${SHA}
+```
+
+When run with this flag, `lerna publish` publishes packages in a more granular way (per commit).
+Before publishing to npm, it creates the new `version` tag by taking the current `version`, bumping it to the next _minor_ version, adding the provided meta suffix (defaults to `alpha`) and appending the current git sha (ex: `1.0.0` becomes `1.1.0-alpha.0+81e3b443`).
+
+If you have publish canary releases from multiple active development branches in CI,
+it is recommended to customize the [`--preid`](#--preid) and [`--dist-tag <tag>`](#--dist-tag-tag) on a per-branch basis to avoid clashing versions.
+
+> The intended use case for this flag is a per commit level release or nightly release.
 
 
 ### 过滤选项
