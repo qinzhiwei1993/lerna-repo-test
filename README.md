@@ -543,6 +543,19 @@ $ lerna run build --npm-client=yarn
 - 其余同`lerna exec`
 
 
+### [lerna publish](https://github.com/lerna/lerna/tree/master/commands/publish#readme)
+
+```sh
+lerna publish              # 发布自上次发版依赖更新的packages
+lerna publish from-git     # 显示的发布在当前提交中打了标记的packages
+lerna publish from-package # 显示的发布当前版本在注册表中（registry）不存在的packages
+```
+
+运行时，该命令执行以下操作之一：
+
+- 
+
+
 ### 过滤选项
 
 - `--scope` 为匹配到的 package 安装依赖 [字符串]
