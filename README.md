@@ -631,6 +631,22 @@ lerna publish --contents dist
 # publish the "dist" subfolder of every Lerna-managed leaf package
 ```
 
+#### `--dist-tag <tag>`
+
+```sh
+lerna publish --dist-tag custom-tag
+```
+
+自定义npm[发布标签](https://docs.npmjs.com/cli/dist-tag)。默认是`latest`
+
+该选项可以用来定义[`prerelease`](http://carrot.is/coding/npm_prerelease) 或者 `beta` 版本
+
+
+> **注意**: `npm install my-package` 默认安装的是`latest`版本.
+> 安装其他版本 `npm install my-package@prerelease`.
+
+![lerna publish --canary](./images/WX20200831-182407@2x.png)
+
 
 
 ### 过滤选项
