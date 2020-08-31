@@ -553,7 +553,26 @@ lerna publish from-package # 显示的发布当前版本在注册表中（regist
 
 运行时，该命令执行以下操作之一：
 
-- 
+- 发布自上次发版依赖更新的packages（背后调用`lerna version`判断）
+  - 这是2.x版本遗留的表现
+- 显示的发布在当前提交中打了tag的packages
+- 显示的发布在最新的提交中当前版本在注册表中（registry）不存在的packages（之前没有发布到npm上） 
+- 发布在之前提交中未版本化的进行过金丝雀部署的packages([`canary release`](https://www.dazhuanlan.com/2019/09/27/5d8d956b87584/))
+
+> Lerna无法发布私有的packcage(`"private":true`)
+
+在所有发布操作期间，适当的生命周期脚本（[`lifecycle scripts`](https://github.com/lerna/lerna/tree/master/commands/publish#lifecycle-scripts)）在根目录和每个包中被调用(除非被`--ignore-scripts`禁用)。
+
+
+#### Positionals 
+
+- bump `from-git`
+
+除了`lerna version`支持的semver关键字之外，`lerna publish`还支持`from-git`关键字。这将识别`lerna version`标记的包，并将它们发布到npm。这在CI场景中非常有用，在这种场景中，您希望手动增加版本，但要通过自动化过程一致地发布包内容本身
+
+- bump `from-package`
+
+与`from-git`关键字相似，除了要发布的软件包列表是通过检查每个package.json并确定注册表中是否没有任何软件包版本来确定的。 注册表中不存在的任何版本都将被发布。 当先前的`lerna publish`未能将所有程序包发布到注册表时，此功能很有用。
 
 
 ### 过滤选项
