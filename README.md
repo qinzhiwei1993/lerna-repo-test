@@ -547,7 +547,7 @@ $ lerna run build --npm-client=yarn
 
 ```sh
 lerna publish              # 发布自上次发版依赖更新的packages
-lerna publish from-git     # 显示的发布在当前提交中打了标记的packages
+lerna publish from-git     # 显示的发布在当前提交中打了tag的packages
 lerna publish from-package # 显示的发布当前版本在注册表中（registry）不存在的packages（之前没有发布到npm上）
 ```
 
