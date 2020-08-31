@@ -622,6 +622,15 @@ lerna publish --canary preminor
 ![lerna publish --canary](./images/1598864025009.jpg)
 
 
+#### `--contents <dir>`
+
+子目录发布。子目录中必须包含package.json。
+
+```sh
+lerna publish --contents dist
+# publish the "dist" subfolder of every Lerna-managed leaf package
+```
+
 
 
 ### 过滤选项
