@@ -649,7 +649,7 @@ lerna publish --dist-tag custom-tag
 
 
 
-### `--git-head <sha>`
+#### `--git-head <sha>`
 
 只可以和`from-package`配合使用，根据指定的`git <sha>`发布
 
@@ -660,7 +660,7 @@ lerna publish from-package --git-head ${CODEBUILD_RESOLVED_SOURCE_VERSION}
 ```
 
 
-### `--graph-type <all|dependencies>`
+#### `--graph-type <all|dependencies>`
 
 `npm`上构建`package dependencies`所采用的方式，默认是`dependencies`，只列出`dependencies`。`all`会列出`dependencies` 和 `devDependencies`
 
@@ -682,6 +682,33 @@ lerna publish --graph-type all
 
 ![lerna publish --graph-type all](./images/WX20200831-185905@2x.png)
 
+
+
+#### `--ignore-scripts`
+
+关闭`npm脚本生命周期事件`的触发
+
+#### `--ignore-prepublish`
+
+近关闭`npm脚本生命周期 prepublish事件`的触发
+
+#### `--legacy-auth`
+
+发布验证
+
+```sh
+lerna publish --legacy-auth aGk6bW9t
+```
+
+#### `--no-git-reset`
+
+By default, `lerna publish` ensures any changes to the working tree have been reset.
+
+To avoid this, pass `--no-git-reset`. This can be especially useful when used as part of a CI pipeline in conjunction with the `--canary` flag. For instance, the `package.json` version numbers which have been bumped may need to be used in subsequent CI pipeline steps (such as Docker builds).
+
+```sh
+lerna publish --no-git-reset
+```
 
 
 
