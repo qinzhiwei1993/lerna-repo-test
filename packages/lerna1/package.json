@@ -1,6 +1,6 @@
 {
   "name": "@qinzhiwei1993/lerna1",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "lerna 1",
   "keywords": [
     "lerna",
@@ -27,7 +27,7 @@
   },
   "gitHead": "72d7b6b35b3121c1f60b40b14c4ef806cdd479b5",
   "dependencies": {
-    "@qinzhiwei1993/esmouel-tag-dep": "^0.0.14",
+    "@qinzhiwei1993/esmouel-tag-dep": "^0.0.15",
     "jquery": "^3.5.1",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",
