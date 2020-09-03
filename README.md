@@ -622,7 +622,7 @@ lerna publish --canary preminor
 ![lerna publish --canary](./images/1598864025009.jpg)
 
 
-#### `--contents <dir>`
+##### `--contents <dir>`
 
 子目录发布。子目录中必须包含package.json。
 
@@ -631,7 +631,7 @@ lerna publish --contents dist
 # publish the "dist" subfolder of every Lerna-managed leaf package
 ```
 
-#### `--dist-tag <tag>`
+##### `--dist-tag <tag>`
 
 ```sh
 lerna publish --dist-tag custom-tag
@@ -649,7 +649,7 @@ lerna publish --dist-tag custom-tag
 
 
 
-#### `--git-head <sha>`
+##### `--git-head <sha>`
 
 只可以和`from-package`配合使用，根据指定的`git <sha>`发布
 
@@ -660,7 +660,7 @@ lerna publish from-package --git-head ${CODEBUILD_RESOLVED_SOURCE_VERSION}
 ```
 
 
-#### `--graph-type <all|dependencies>`
+##### `--graph-type <all|dependencies>`
 
 `npm`上构建`package dependencies`所采用的方式，默认是`dependencies`，只列出`dependencies`。`all`会列出`dependencies` 和 `devDependencies`
 
@@ -684,23 +684,23 @@ lerna publish --graph-type all
 
 
 
-#### `--ignore-scripts`
+##### `--ignore-scripts`
 
 关闭`npm脚本生命周期事件`的触发
 
-#### `--ignore-prepublish`
+##### `--ignore-prepublish`
 
 近关闭`npm脚本生命周期 prepublish事件`的触发
 
-#### `--legacy-auth`
+##### `--legacy-auth`
 
-发布验证
+发布前的身份验证
 
 ```sh
 lerna publish --legacy-auth aGk6bW9t
 ```
 
-#### `--no-git-reset`
+##### `--no-git-reset`
 
 By default, `lerna publish` ensures any changes to the working tree have been reset.
 
@@ -709,6 +709,213 @@ To avoid this, pass `--no-git-reset`. This can be especially useful when used as
 ```sh
 lerna publish --no-git-reset
 ```
+
+
+
+##### `--no-granular-pathspec`
+
+By default, `lerna publish` will attempt (if enabled) to `git checkout` _only_ the leaf package manifests that are temporarily modified during the publishing process. This yields the equivalent of `git checkout -- packages/*/package.json`, but tailored to _exactly_ what changed.
+
+If you **know** you need different behavior, you'll understand: Pass `--no-granular-pathspec` to make the git command _literally_ `git checkout -- .`. By opting into this [pathspec](https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec), you must have all intentionally unversioned content properly ignored.
+
+This option makes the most sense configured in lerna.json, as you really don't want to mess it up:
+
+```json
+{
+  "version": "independent",
+  "granularPathspec": false
+}
+```
+
+The root-level configuration is intentional, as this also covers the [identically-named option in `lerna version`](https://github.com/lerna/lerna/tree/master/commands/version#--no-granular-pathspec).
+
+##### `--no-verify-access`
+
+默认情况下`lerna`会验证已登录用户对即将发布的package的权限。使用此标记将会阻止该默认行为。
+
+如果你正在使用第三方的不支持`npm access ls-packages`的npm库，需要使用该标记。或者在`lerna.json`中设置`command.publish.verifyAccess`为`false`。
+
+> 谨慎使用
+
+##### `--otp`
+
+当发布需要双重认证的package时，需要指定[一次性密码](https://docs.npmjs.com/about-two-factor-authentication)
+
+```sh
+lerna publish --otp 123456
+```
+
+当开启[npm双重认证](https://docs.npmjs.com/about-two-factor-authentication)后，可以通过配置对account和npm操作的进行二次验证。需要npm版本大于`5.5.0`
+
+[验证工具](https://authy.com/guides/npm/)
+
+![Two-factor authentication](./images/WX20200902-170413@2x.png)
+
+
+> 密码的有效时长为30s，过期后需要重新输入验证
+
+
+##### `--preid`
+
+Unlike the `lerna version` option of the same name, this option only applies to [`--canary`](#--canary) version calculation.
+
+和 [`--canary`](#--canary) 配合使用，指定语义化版本
+
+```sh
+lerna publish --canary
+# uses the next semantic prerelease version, e.g.
+# 1.0.0 => 1.0.1-alpha.0
+
+lerna publish --canary --preid next
+# uses the next semantic prerelease version with a specific prerelease identifier, e.g.
+# 1.0.0 => 1.0.1-next.0
+```
+
+当使用该标记时，`lerna publish --canary` 将增量改变 `premajor`, `preminor`, `prepatch`, 或者 `prerelease` 的语义化版本。
+[语义化版本(prerelease identifier)](http://semver.org/#spec-item-9)
+
+##### `--pre-dist-tag <tag>`
+
+```sh
+lerna publish --pre-dist-tag next
+```
+
+效果和[`--dist-tag`](#--dist-tag-tag)一样。只适用于发布的预发布版本。
+
+
+##### `--registry <url>`
+
+##### `--tag-version-prefix`
+
+更改标签前缀
+
+如果分割`lerna version`和`lerna publish`，需要都设置一遍：
+
+```bash
+# locally
+lerna version --tag-version-prefix=''
+
+# on ci
+lerna publish from-git --tag-version-prefix=''
+```
+
+也可以在`lerna.json`中配置该属性，效果等同于上面两条命令：
+
+```json
+{
+  "tagVersionPrefix": "",
+  "packages": ["packages/*"],
+  "version": "independent"
+}
+```
+
+##### `--temp-tag`
+
+
+当传递时，这个标志将改变默认的发布过程，首先将所有更改过的包发布到一个临时的dis tag (' lerna-temp ')中，然后将新版本移动到['--dist-tag '](#——dist-tag-tag)(默认为' latest ')配置的dist-tag中。
+
+这通常是没有必要的，因为Lerna在默认情况下会按照拓扑顺序(所有依赖先于依赖)发布包
+
+##### `--yes`
+
+```sh
+lerna publish --canary --yes
+# skips `Are you sure you want to publish the above changes?`
+```
+
+跳过所有的确认提示
+
+在[Continuous integration (CI)](https://en.wikipedia.org/wiki/Continuous_integration)很有用，自动回答发布时的确认提示
+
+
+#### 每个package的配置
+
+每个package可以通过更改[`publishConfig`](https://docs.npmjs.com/files/package.json#publishconfig)，来改变发布时的一些行为。
+
+##### `publishConfig.access`
+
+当发布一个`scope`的package(e.g., `@mycompany/rocks`)时，必须设置[`access`](https://docs.npmjs.com/misc/config#access)：
+
+```json
+  "publishConfig": {
+    "access": "public"
+  }
+```
+
+- 如果在没有使用scope的package中使用该属性，将失败
+- 如果你希望保持一个scope的package为私有(i.e., `"restricted"`)，那么就不需要设置
+
+  注意，这与在包中设置`"private":true`不一样;如果设置了`private`字段，那么在任何情况下都不会发布该包。
+
+##### `publishConfig.registry`
+
+```json
+  "publishConfig": {
+    "registry": "http://my-awesome-registry.com/"
+  }
+```
+
+- 也可以通过`--registry`或者在lerna.json中设置`command.publish.registry`进行全局控制
+
+##### `publishConfig.tag`
+
+自定义该包发布时的标签[`tag`](https://docs.npmjs.com/misc/config#tag):
+
+```json
+  "publishConfig": {
+    "tag": "flippin-sweet"
+  }
+```
+
+- [`--dist-tag`](#--dist-tag-tag)将覆盖每个package中的值
+- 在使用[--canary]时该值将被忽略
+
+##### `publishConfig.directory`
+
+非标准字段，自定义发布的文件
+
+```json
+  "publishConfig": {
+    "directory": "dist"
+  }
+```
+
+#### npm脚本生命周期
+
+```js
+// prepublish:      Run BEFORE the package is packed and published.
+// prepare:         Run BEFORE the package is packed and published, AFTER prepublish, BEFORE prepublishOnly.
+// prepublishOnly:  Run BEFORE the package is packed and published, ONLY on npm publish.
+// prepack:     Run BEFORE a tarball is packed.
+// postpack:    Run AFTER the tarball has been generated and moved to its final destination.
+// publish:     Run AFTER the package is published.
+// postpublish: Run AFTER the package is published.
+```
+
+`lerna publish`执行时，按如下顺序调用[npm脚本生命周期](https://docs.npmjs.com/misc/scripts#description)：
+
+
+1. 如果采用隐式版本管理，则运行所有 [version lifecycle scripts](https://github.com/lerna/lerna/tree/master/commands/version#lifecycle-scripts)。
+2. Run `prepublish` lifecycle in root, if [enabled](#--ignore-prepublish)
+3. Run `prepare` lifecycle in root
+4. Run `prepublishOnly` lifecycle in root
+5. Run `prepack` lifecycle in root
+6. For each changed package, in topological order (all dependencies before dependents):
+   1. Run `prepublish` lifecycle, if [enabled](#--ignore-prepublish)
+   2. Run `prepare` lifecycle
+   3. Run `prepublishOnly` lifecycle
+   4. Run `prepack` lifecycle
+   5. Create package tarball in temp directory via [JS API](https://github.com/lerna/lerna/tree/master/utils/pack-directory#readme)
+   6. Run `postpack` lifecycle
+7. Run `postpack` lifecycle in root
+8. For each changed package, in topological order (all dependencies before dependents):
+   1. Publish package to configured [registry](#--registry-url) via [JS API](https://github.com/lerna/lerna/tree/master/utils/npm-publish#readme)
+   2. Run `publish` lifecycle
+   3. Run `postpublish` lifecycle
+9. Run `publish` lifecycle in root
+   - To avoid recursive calls, don't use this root lifecycle to run `lerna publish`
+10. Run `postpublish` lifecycle in root
+11. Update temporary dist-tag to latest, if [enabled](#--temp-tag)
 
 
 
