@@ -702,15 +702,15 @@ lerna publish --legacy-auth aGk6bW9t
 
 ##### `--no-git-reset`
 
-By default, `lerna publish` ensures any changes to the working tree have been reset.
+默认情况下，`lerna publish`会把暂存区内容全部提交。即`lerna publish`发布时更改了本地package中的version，也一并提交到git。
 
-To avoid this, pass `--no-git-reset`. This can be especially useful when used as part of a CI pipeline in conjunction with the `--canary` flag. For instance, the `package.json` version numbers which have been bumped may need to be used in subsequent CI pipeline steps (such as Docker builds).
+![lerna publish](./images/WX20200903-183002@2x.png)
+
+未避免上述情况发生，可以使用`--no-git-reset`。这对作为管道配置`--canary`使用时非常有用。例如，已经改变的`package.json`的版本号可能会在下一步操作所用到（例如Docker builds）。
 
 ```sh
 lerna publish --no-git-reset
 ```
-
-
 
 ##### `--no-granular-pathspec`
 
