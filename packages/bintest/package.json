@@ -36,7 +36,7 @@
     "url": "https://github.com/qinzhiwei1993/lerna-repo-test/issues"
   },
   "module": "dist/bintest.module.js",
-  "gitHead": "72d7b6b35b3121c1f60b40b14c4ef806cdd479b5",
+  "gitHead": "9657918798dd03aaf4e7eaae410b9306a30d5eb8",
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.4",
