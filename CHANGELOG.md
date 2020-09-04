@@ -7,3 +7,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package root
 
+## 4.4.0 (2020-09-14)
+
+#### :rocket: New Features
+* `@vue/cli`
+  * [#5498](https://github.com/vuejs/vue-cli/pull/5498) feat(plugin-api): expose `inquirer` to prompts.js, allowing custom prompt types ([@sodatea](https://github.com/sodatea))
+* `@vue/cli-service`
+  * [#5376](https://github.com/vuejs/vue-cli/pull/5376) feat(cli-service) add stdin flag to build ([@sickp](https://github.com/sickp))
