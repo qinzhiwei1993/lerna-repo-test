@@ -549,7 +549,7 @@ $ lerna run build --npm-client=yarn
 > 生成新的唯一版本号
 > bumm version：在使用类似github程序时，升级版本号到一个新的唯一值
 
-## Usage
+#### 使用方法
 
 ```sh
 lerna version 1.0.1 # 显示指定
@@ -565,9 +565,9 @@ lerna version       # 从提示中选择
 4.在git上提交改变并对该次提交打标记(`git commit` & `git tag`)
 5.提交到远程仓库(`git push`)
 
-## Positionals
+#### Positionals
 
-### semver `bump`
+##### semver `bump`
 
 ```sh
 lerna version [major | minor | patch | premajor | preminor | prepatch | prerelease]
@@ -577,7 +577,7 @@ lerna version [major | minor | patch | premajor | preminor | prepatch | prerelea
 When this positional parameter is passed, `lerna version` will skip the version selection prompt and [increment](https://github.com/npm/node-semver#functions) the version by that keyword.
 You must still use the `--yes` flag to avoid all prompts.
 
-## Prerelease
+#### Prerelease
 
 If you have any packages with a prerelease version number (e.g. `2.0.0-beta.3`) and you run `lerna version` with and a non-prerelease bump (`major`, `minor`, or `patch`), it will publish those previously pre-released packages _as well as_ the packages that have changed since the last release.
 
@@ -588,7 +588,7 @@ For projects using conventional commits, use the following flags for prerelease 
 
 Running `lerna version --conventional-commits` without the above flags will release current changes as prerelease only if the version is already in prerelease.
 
-## Options
+#### Command Options
 
 - [`--allow-branch`](#--allow-branch-glob)
 - [`--amend`](#--amend)
