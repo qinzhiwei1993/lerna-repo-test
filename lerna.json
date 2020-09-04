@@ -1,14 +1,19 @@
 {
   "useWorkspaces": true,
   "npmClient": "yarn",
-  "version": "0.0.20-alpha.0",
-  "packages": ["packages/*"],
+  "version": "0.0.20-alpha.1",
+  "packages": [
+    "packages/*"
+  ],
   "command": {
     "bootstrap": {
       "ignore": ""
     },
     "version": {
-      "allowBranch": ["master", "feature/*"]
+      "allowBranch": [
+        "master",
+        "feature/*"
+      ]
     }
   },
   "changelog": {
