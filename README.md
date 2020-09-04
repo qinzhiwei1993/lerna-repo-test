@@ -557,6 +557,7 @@ lerna version patch # 语义关键字
 lerna version       # 从提示中选择
 ```
 
+
 当执行时，该命令做了一下事情:
 
 1.识别从上次打标记发布以来发生变更的package
@@ -564,6 +565,9 @@ lerna version       # 从提示中选择
 3.修改package的元数据反映新的版本，在根目录和每个package中适当运行[lifecycle scripts](#lifecycle-scripts)
 4.在git上提交改变并对该次提交打标记(`git commit` & `git tag`)
 5.提交到远程仓库(`git push`)
+
+![lerna version](./images/WX20200904-153703@2x.png)
+
 
 #### Positionals
 
@@ -581,10 +585,10 @@ You must still use the `--yes` flag to avoid all prompts.
 
 如果某些package是预发布版本(e.g. `2.0.0-beta.3`)，当你运行`lerna version`配合语义化版本时(`major`, `minor`, `patch`)，它将发布之前的预发布版本和自上次发布以来改变过的packcage。
 
-For projects using conventional commits, use the following flags for prerelease management:
+对于使用常规提交的项目，可以使用如下标记管理预发布版本：
 
-- **[`--conventional-prerelease`](#--conventional-prerelease):** release current changes as prerelease versions.
-- **[`--conventional-graduate`](#--conventional-graduate):** graduate prerelease versioned packages to stable versions.
+- **[`--conventional-prerelease`](#--conventional-prerelease):** 发布当前变更为预发布版本
+- **[`--conventional-graduate`](#--conventional-graduate):** 升级预发布版本为稳定版
 
 Running `lerna version --conventional-commits` without the above flags will release current changes as prerelease only if the version is already in prerelease.
 
@@ -617,42 +621,22 @@ Running `lerna version --conventional-commits` without the above flags will rele
 - [`--tag-version-prefix`](#--tag-version-prefix)
 - [`--yes`](#--yes)
 
-### `--allow-branch <glob>`
+##### `--allow-branch <glob>`
 
 A whitelist of globs that match git branches where `lerna version` is enabled.
 It is easiest (and recommended) to configure in `lerna.json`, but it is possible to pass as a CLI option as well.
 
-```json
-{
-  "command": {
-    "version": {
-      "allowBranch": "master"
-    }
-  }
-}
-```
+设置可以调用`lerna version`命令的分支白名单，也可以在`lerna.json`中设置
 
-With the configuration above, the `lerna version` will fail when run from any branch other than `master`.
-It is considered a best-practice to limit `lerna version` to the primary branch alone.
 
 ```json
 {
   "command": {
     "version": {
-      "allowBranch": ["master", "feature/*"]
+      "allowBranch": ["master", "beta/*", "feature/*"]
     }
   }
 }
-```
-
-With the preceding configuration, `lerna version` will be allowed in any branch prefixed with `feature/`.
-Please be aware that generating git tags in feature branches is fraught with potential errors as the branches are merged into the primary branch. If the tags are "detached" from their original context (perhaps through a squash merge or a conflicted merge commit), future `lerna version` executions will have difficulty determining the correct "diff since last release."
-
-It is always possible to override this "durable" config on the command-line.
-Please use with caution.
-
-```sh
-lerna version --allow-branch hotfix/oops-fix-the-thing
 ```
 
 ### `--amend`
@@ -662,10 +646,7 @@ lerna version --amend
 # commit message is retained, and `git push` is skipped.
 ```
 
-When run with this flag, `lerna version` will perform all changes on the current commit, instead of adding a new one.
-This is useful during [Continuous integration (CI)](https://en.wikipedia.org/wiki/Continuous_integration) to reduce the number of commits in the project's history.
-
-In order to prevent unintended overwrites, this command will skip `git push` (i.e., it implies `--no-push`).
+默认情况下如果暂存区有未提交的内容，`lerna version`会失败，需要提前保存本地内容。使用该标记可以较少commit的次数，将当前变更内容随着本次版本变化一次commit。并且不会`git push`
 
 ### `--changelog-preset`
 

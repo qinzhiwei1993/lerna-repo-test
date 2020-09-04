@@ -8,6 +8,9 @@
   "command": {
     "bootstrap": {
       "ignore": ""
+    },
+    "version": {
+      "allowBranch": ["master", "feature/*"]
     }
   }
 }
