@@ -661,10 +661,9 @@ lerna version --conventional-commits --changelog-preset angular-bitbucket
 ```sh
 lerna version --conventional-commits
 ```
+当使用这个标志运行时，lerna版本将使用[传统的提交规范](https://conventionalcommits.org/)来[确定版本]((https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-recommended-bump)并生成[CHANGELOG.md](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli).。
 
-When run with this flag, `lerna version` will use the [Conventional Commits Specification](https://conventionalcommits.org/) to [determine the version bump](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-recommended-bump) and [generate CHANGELOG.md files](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli).
-
-Passing [`--no-changelog`](#--no-changelog) will disable the generation (or updating) of `CHANGELOG.md` files.
+传入 [`--no-changelog`](#--no-changelog) 将阻止生成或者更新`CHANGELOG.md`.
 
 ### `--conventional-graduate`
 
