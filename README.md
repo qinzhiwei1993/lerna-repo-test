@@ -579,7 +579,7 @@ You must still use the `--yes` flag to avoid all prompts.
 
 #### Prerelease
 
-If you have any packages with a prerelease version number (e.g. `2.0.0-beta.3`) and you run `lerna version` with and a non-prerelease bump (`major`, `minor`, or `patch`), it will publish those previously pre-released packages _as well as_ the packages that have changed since the last release.
+如果某些package是预发布版本(e.g. `2.0.0-beta.3`)，当你运行`lerna version`配合语义化版本时(`major`, `minor`, `patch`)，它将发布之前的预发布版本和自上次发布以来改变过的packcage。
 
 For projects using conventional commits, use the following flags for prerelease management:
 
