@@ -639,7 +639,7 @@ It is easiest (and recommended) to configure in `lerna.json`, but it is possible
 }
 ```
 
-### `--amend`
+##### `--amend`
 
 ```sh
 lerna version --amend
@@ -648,18 +648,13 @@ lerna version --amend
 
 默认情况下如果暂存区有未提交的内容，`lerna version`会失败，需要提前保存本地内容。使用该标记可以较少commit的次数，将当前变更内容随着本次版本变化一次commit。并且不会`git push`
 
-### `--changelog-preset`
+##### `--changelog-preset`
 
 ```sh
 lerna version --conventional-commits --changelog-preset angular-bitbucket
 ```
 
-By default, the changelog preset is set to [`angular`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular#angular-convention).
-In some cases you might want to change either use a another preset or a custom one.
-
-Presets are names of built-in or installable configuration for conventional changelog.
-Presets may be passed as the full name of the package, or the auto-expanded suffix
-(e.g., `angular` is expanded to `conventional-changelog-angular`).
+默认情况下，changelog预设设置为[`angular`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular#angular-convention)。在某些情况下，您可能需要使用另一个预置或自定义。
 
 ### `--conventional-commits`
 
