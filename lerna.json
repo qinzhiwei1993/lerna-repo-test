@@ -2,9 +2,7 @@
   "useWorkspaces": true,
   "npmClient": "yarn",
   "version": "0.0.20-alpha.0",
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "command": {
     "bootstrap": {
       "ignore": ""
@@ -12,5 +10,17 @@
     "version": {
       "allowBranch": ["master", "feature/*"]
     }
+  },
+  "changelog": {
+    "repo": "qinzhiwei1993/lerna-repo-test",
+    "labels": {
+      "PR: New Feature": ":rocket: New Features",
+      "PR: Breaking Change": ":boom: Breaking Changes",
+      "PR: Bug Fix": ":bug: Bug Fix",
+      "PR: Documentation": ":memo: Documentation",
+      "PR: Internal": ":house: Internal",
+      "PR: Underlying Tools": ":hammer: Underlying Tools"
+    },
+    "cacheDir": ".changelog"
   }
 }
