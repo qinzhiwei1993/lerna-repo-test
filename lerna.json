@@ -13,7 +13,8 @@
       "allowBranch": [
         "master",
         "feature/*"
-      ]
+      ],
+      "message": "chore(release): publish %s"
     }
   },
   "changelog": {
@@ -27,5 +28,6 @@
       "PR: Underlying Tools": ":hammer: Underlying Tools"
     },
     "cacheDir": ".changelog"
-  }
+  },
+  "ignoreChanges": ["**/__fixtures__/**", "**/__tests__/**", "**/*.md"]
 }

@@ -656,16 +656,16 @@ lerna version --conventional-commits --changelog-preset angular-bitbucket
 
 默认情况下，changelog预设设置为[`angular`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular#angular-convention)。在某些情况下，您可能需要使用另一个预置或自定义。
 
-### `--conventional-commits`
+##### `--conventional-commits`
 
 ```sh
 lerna version --conventional-commits
 ```
-当使用这个标志运行时，lerna版本将使用[传统的提交规范](https://conventionalcommits.org/)来[确定版本]((https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-recommended-bump)并生成[CHANGELOG.md](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli).。
+当使用这个标志运行时，lerna版本将使用[传统的提交规范/Conventional Commits Specification](https://conventionalcommits.org/)来[确定版本]((https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-recommended-bump)并生成[CHANGELOG.md](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli)。
 
 传入 [`--no-changelog`](#--no-changelog) 将阻止生成或者更新`CHANGELOG.md`.
 
-### `--conventional-graduate`
+##### `--conventional-graduate`
 
 ```sh
 lerna version --conventional-commits --conventional-graduate=package-2,package-4
@@ -674,11 +674,12 @@ lerna version --conventional-commits --conventional-graduate=package-2,package-4
 lerna version --conventional-commits --conventional-graduate
 ```
 
-When run with this flag, `lerna version` will graduate the specified packages (comma-separated) or all packages using `*`. This command works regardless of whether the current HEAD has been released, similar to `--force-publish`, except that any non-prerelease packages are ignored. If changes are present for packages that are not specified (if specifying packages), or for packages that are not in prerelease, those packages will be versioned as they normally would using `--conventional-commits`.
+但使用该标记时，`lerna vesion`将升级指定的package（用逗号分隔）或者使用`*`指定全部package。和`--force-publish`很像，无论当前的HEAD是否发布，该命令都会起作用，任何没有预发布的package将会被忽略。如果未指定的包(如果指定了包)或未预先发布的包发生了更改，那么这些包将按照它们通常使用的`--conventional-commits`进行版本控制。
 
-"Graduating" a package means bumping to the non-prerelease variant of a prerelease version, eg. `package-1@1.0.0-alpha.0 => package-1@1.0.0`.
+"升级"一个包意味着将一个预发布的包升级为发布版本，例如`package-1@1.0.0-alpha.0 => package-1@1.0.0`。
 
-> NOTE: when specifying packages, dependents of specified packages will be released, but will not be graduated.
+
+> 注意: 当指定包时，指定包的依赖项将被释放，但不会被“升级”
 
 ### `--conventional-prerelease`
 
