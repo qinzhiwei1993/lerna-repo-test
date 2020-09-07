@@ -695,7 +695,7 @@ lerna version --conventional-commits --conventional-prerelease
 
 当使用该标记时，`lerna version`将会以预发布的版本发布指定的package（用逗号分隔）或者使用`*`指定全部package。
 
-### `--create-release <type>`
+##### `--create-release <type>`
 
 ```sh
 lerna version --conventional-commits --create-release github
