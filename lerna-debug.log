@@ -1,16 +1,92 @@
-0 silly argv { _: [ 'add' ],
-0 silly argv   dev: true,
-0 silly argv   D: true,
-0 silly argv   globs: [],
+0 silly argv { _: [ 'version' ],
+0 silly argv   'conventional-commits': true,
+0 silly argv   conventionalCommits: true,
+0 silly argv   'create-release': 'github',
+0 silly argv   createRelease: 'github',
 0 silly argv   lernaVersion: '3.22.1',
-0 silly argv   '$0': 'lerna',
-0 silly argv   pkg: '@babel/@babel/cli' }
+0 silly argv   '$0': 'lerna' }
 1 notice cli v3.22.1
 2 verbose rootPath /Users/qinzhiwei/IT/git/learn/lerna
-3 error Error: Invalid package name "@babel/": name can only contain URL-friendly characters
-3 error     at invalidPackageName (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/npm-package-arg/npa.js:86:15)
-3 error     at Result.setName (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/npm-package-arg/npa.js:121:11)
-3 error     at new Result (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/npm-package-arg/npa.js:111:23)
-3 error     at resolve (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/npm-package-arg/npa.js:58:15)
-3 error     at npa (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/npm-package-arg/npa.js:52:10)
-3 error     at AddCommand.initialize (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/@lerna/add/index.js:39:17)
+3 info current version 0.0.23-alpha.1
+4 silly isAnythingCommitted
+5 verbose isAnythingCommitted 1
+6 silly currentBranch
+7 verbose currentBranch master
+8 silly remoteBranchExists
+9 silly isBehindUpstream
+10 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 3
+11 silly hasTags
+12 verbose hasTags true
+13 silly git-describe.sync "v0.0.23-alpha.1-3-g4a4de9d" => {"lastTagName":"v0.0.23-alpha.1","lastVersion":"v0.0.23-alpha.1","refCount":"3","sha":"4a4de9d","isDirty":false}
+14 info Looking for changed packages since v0.0.23-alpha.1
+15 info ignoring diff in paths matching [ '**/__fixtures__/**', '**/__tests__/**', '**/*.md' ]
+16 silly checking diff packages/bintest
+17 silly no diff found in @qinzhiwei1993/bintest
+18 silly checking diff packages/esmouel-tag-dep
+19 silly no diff found in @qinzhiwei1993/esmouel-tag-dep
+20 silly checking diff packages/l-cli
+21 silly found diff in packages/l-cli/src/index.js
+22 verbose filtered diff [ 'packages/l-cli/src/index.js' ]
+23 silly checking diff packages/lerna1
+24 silly no diff found in @qinzhiwei1993/lerna1
+25 silly checking diff packages/lerna2
+26 silly no diff found in @qinzhiwei1993/lerna2
+27 silly checking diff packages/lerna3
+28 silly no diff found in @qinzhiwei1993/lerna3
+29 silly checking diff packages/lerna4
+30 silly no diff found in @qinzhiwei1993/lerna4
+31 verbose updated @qinzhiwei1993/l-cli
+32 verbose git-describe undefined => "v0.0.23-alpha.1-3-g4a4de9d"
+33 silly git-describe parsed => {"lastTagName":"v0.0.23-alpha.1","lastVersion":"v0.0.23-alpha.1","refCount":"3","sha":"4a4de9d","isDirty":false}
+34 silly fixed for @qinzhiwei1993/l-cli at /Users/qinzhiwei/IT/git/learn/lerna/packages/l-cli
+35 verbose getChangelogConfig using preset "conventional-changelog-angular"
+36 silly npa Result {
+36 silly npa   type: 'tag',
+36 silly npa   registry: true,
+36 silly npa   where: undefined,
+36 silly npa   raw: 'conventional-changelog-angular',
+36 silly npa   name: 'conventional-changelog-angular',
+36 silly npa   escapedName: 'conventional-changelog-angular',
+36 silly npa   scope: undefined,
+36 silly npa   rawSpec: '',
+36 silly npa   saveSpec: null,
+36 silly npa   fetchSpec: 'latest',
+36 silly npa   gitRange: undefined,
+36 silly npa   gitCommittish: undefined,
+36 silly npa   hosted: undefined }
+37 verbose getChangelogConfig Attempting to resolve preset "conventional-changelog-angular"
+38 info getChangelogConfig Successfully resolved preset "conventional-changelog-angular"
+39 verbose fixed increment 0.0.23-alpha.1 by prerelease
+40 info execute Creating releases...
+41 silly lifecycle No script for "preversion" in "root", continuing
+42 silly lifecycle No script for "preversion" in "@qinzhiwei1993/l-cli", continuing
+43 silly lifecycle No script for "version" in "@qinzhiwei1993/l-cli", continuing
+44 silly fixed for @qinzhiwei1993/l-cli at /Users/qinzhiwei/IT/git/learn/lerna/packages/l-cli
+45 silly fixed writing new entry: "## [0.0.23-alpha.2](https://github.com/qinzhiwei1993/lerna-repo-test/compare/v0.0.23-alpha.1...v0.0.23-alpha.2) (2020-09-07)\n\n**Note:** Version bump only for package @qinzhiwei1993/l-cli\n\n\n\n"
+46 verbose fixed wrote /Users/qinzhiwei/IT/git/learn/lerna/packages/l-cli/CHANGELOG.md
+47 silly root for root at /Users/qinzhiwei/IT/git/learn/lerna
+48 silly root writing new entry: "## [0.0.23-alpha.2](https://github.com/qinzhiwei1993/lerna-repo-test/compare/v0.0.23-alpha.1...v0.0.23-alpha.2) (2020-09-07)\n\n**Note:** Version bump only for package root\n\n\n\n"
+49 verbose root wrote /Users/qinzhiwei/IT/git/learn/lerna/CHANGELOG.md
+50 silly lifecycle No script for "version" in "root", continuing
+51 silly gitAdd [ 'packages/l-cli/package.json',
+51 silly gitAdd   'packages/l-cli/CHANGELOG.md',
+51 silly gitAdd   'CHANGELOG.md',
+51 silly gitAdd   'lerna.json' ]
+52 silly gitCommit chore(release): publish v0.0.23-alpha.2
+53 verbose git [ 'commit', '-m', 'chore(release): publish v0.0.23-alpha.2' ]
+54 silly gitTag v0.0.23-alpha.2
+55 verbose git [ 'tag', 'v0.0.23-alpha.2', '-m', 'v0.0.23-alpha.2' ]
+56 silly lifecycle No script for "postversion" in "@qinzhiwei1993/l-cli", continuing
+57 silly lifecycle No script for "postversion" in "root", continuing
+58 info git Pushing tags...
+59 silly gitPush origin master
+60 silly parseGitRepo
+61 verbose git [ 'config', '--get', 'remote.origin.url' ]
+62 silly createGitHubClient
+63 error Error: A GH_TOKEN environment variable is required.
+63 error     at createGitHubClient (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/@lerna/github-client/lib/github-client.js:17:11)
+63 error     at createClient (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/@lerna/version/lib/create-release.js:16:14)
+63 error     at createRelease (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/@lerna/version/lib/create-release.js:25:18)
+63 error     at tasks.push (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/@lerna/version/index.js:282:9)
+63 error     at pReduce (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/p-waterfall/index.js:4:73)
+63 error     at Promise.all.then.value (/Users/qinzhiwei/IT/git/learn/lerna/node_modules/p-reduce/index.js:16:10)
