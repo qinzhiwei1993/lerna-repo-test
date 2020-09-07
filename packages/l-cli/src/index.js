@@ -2,4 +2,4 @@
 
 console.log('lerna version prerelease changlog ')
 
-console.log('--conventional-commits 1')
+console.log('--conventional-commits 1 2')
