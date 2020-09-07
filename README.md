@@ -702,22 +702,22 @@ lerna version --conventional-commits --create-release github
 lerna version --conventional-commits --create-release gitlab
 ```
 
-When run with this flag, `lerna version` will create an official GitHub or GitLab release based on the changed packages. Requires `--conventional-commits` to be passed so that changelogs can be generated.
+当使用此标志时，`lerna version`会基于改变的package创建一个官方正式的GitHub或GitLab版本记录。需要传递`--conventional-commits`去创建changlog。
 
-To authenticate with GitHub, the following environment variables can be defined.
+GithuB认证，以下环境变量需要被定义。
 
 - `GH_TOKEN` (required) - Your GitHub authentication token (under Settings > Developer settings > Personal access tokens).
 - `GHE_API_URL` - When using GitHub Enterprise, an absolute URL to the API.
 - `GHE_VERSION` - When using GitHub Enterprise, the currently installed GHE version. [Supports the following versions](https://github.com/octokit/plugin-enterprise-rest.js).
 
-To authenticate with GitLab, the following environment variables can be defined.
+GitLab认证，以下环境变量需要被定义。
 
 - `GL_TOKEN` (required) - Your GitLab authentication token (under User Settings > Access Tokens).
 - `GL_API_URL` - An absolute URL to the API, including the version. (Default: https://gitlab.com/api/v4)
 
-> NOTE: When using this option, you cannot pass [`--no-changelog`](#--no-changelog).
+> 注意: 不允许和[`--no-changelog`](#--no-changelog)一起使用
 
-This option is can also be specified in `lerna.json` configuration:
+这个选项也可以在`lerna.json`中配置：
 
 ```json
 {
@@ -736,7 +736,9 @@ If the preset exports a builder function (e.g. `conventional-changelog-conventio
 }
 ```
 
-### `--exact`
+![lerna version --conventional-commits --create-release github](./images/WX20200907-163903@2x.png)
+
+##### `--exact`
 
 ```sh
 lerna version --exact
