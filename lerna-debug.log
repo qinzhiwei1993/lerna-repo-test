@@ -7,7 +7,7 @@
 0 silly argv   '$0': 'lerna' }
 1 notice cli v3.22.1
 2 verbose rootPath /Users/qinzhiwei/IT/git/learn/lerna
-3 info current version 0.0.23-alpha.2
+3 info current version 0.0.23-alpha.3
 4 silly isAnythingCommitted
 5 verbose isAnythingCommitted 1
 6 silly currentBranch
@@ -17,8 +17,8 @@
 10 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 1
 11 silly hasTags
 12 verbose hasTags true
-13 silly git-describe.sync "v0.0.23-alpha.2-1-gc025801" => {"lastTagName":"v0.0.23-alpha.2","lastVersion":"v0.0.23-alpha.2","refCount":"1","sha":"c025801","isDirty":false}
-14 info Looking for changed packages since v0.0.23-alpha.2
+13 silly git-describe.sync "v0.0.23-alpha.3-1-gfad4bd5" => {"lastTagName":"v0.0.23-alpha.3","lastVersion":"v0.0.23-alpha.3","refCount":"1","sha":"fad4bd5","isDirty":false}
+14 info Looking for changed packages since v0.0.23-alpha.3
 15 info ignoring diff in paths matching [ '**/__fixtures__/**', '**/__tests__/**', '**/*.md' ]
 16 silly checking diff packages/bintest
 17 silly no diff found in @qinzhiwei1993/bintest
@@ -36,8 +36,8 @@
 29 silly checking diff packages/lerna4
 30 silly no diff found in @qinzhiwei1993/lerna4
 31 verbose updated @qinzhiwei1993/l-cli
-32 verbose git-describe undefined => "v0.0.23-alpha.2-1-gc025801"
-33 silly git-describe parsed => {"lastTagName":"v0.0.23-alpha.2","lastVersion":"v0.0.23-alpha.2","refCount":"1","sha":"c025801","isDirty":false}
+32 verbose git-describe undefined => "v0.0.23-alpha.3-1-gfad4bd5"
+33 silly git-describe parsed => {"lastTagName":"v0.0.23-alpha.3","lastVersion":"v0.0.23-alpha.3","refCount":"1","sha":"fad4bd5","isDirty":false}
 34 silly fixed for @qinzhiwei1993/l-cli at /Users/qinzhiwei/IT/git/learn/lerna/packages/l-cli
 35 verbose getChangelogConfig using preset "conventional-changelog-angular"
 36 silly npa Result {
@@ -56,26 +56,26 @@
 36 silly npa   hosted: undefined }
 37 verbose getChangelogConfig Attempting to resolve preset "conventional-changelog-angular"
 38 info getChangelogConfig Successfully resolved preset "conventional-changelog-angular"
-39 verbose fixed increment 0.0.23-alpha.2 by prerelease
+39 verbose fixed increment 0.0.23-alpha.3 by prerelease
 40 info execute Creating releases...
 41 silly lifecycle No script for "preversion" in "root", continuing
 42 silly lifecycle No script for "preversion" in "@qinzhiwei1993/l-cli", continuing
 43 silly lifecycle No script for "version" in "@qinzhiwei1993/l-cli", continuing
 44 silly fixed for @qinzhiwei1993/l-cli at /Users/qinzhiwei/IT/git/learn/lerna/packages/l-cli
-45 silly fixed writing new entry: "## [0.0.23-alpha.3](https://github.com/qinzhiwei1993/lerna-repo-test/compare/v0.0.23-alpha.2...v0.0.23-alpha.3) (2020-09-07)\n\n**Note:** Version bump only for package @qinzhiwei1993/l-cli\n\n\n\n"
+45 silly fixed writing new entry: "## [0.0.23-alpha.4](https://github.com/qinzhiwei1993/lerna-repo-test/compare/v0.0.23-alpha.3...v0.0.23-alpha.4) (2020-09-07)\n\n**Note:** Version bump only for package @qinzhiwei1993/l-cli\n\n\n\n"
 46 verbose fixed wrote /Users/qinzhiwei/IT/git/learn/lerna/packages/l-cli/CHANGELOG.md
 47 silly root for root at /Users/qinzhiwei/IT/git/learn/lerna
-48 silly root writing new entry: "## [0.0.23-alpha.3](https://github.com/qinzhiwei1993/lerna-repo-test/compare/v0.0.23-alpha.2...v0.0.23-alpha.3) (2020-09-07)\n\n**Note:** Version bump only for package root\n\n\n\n"
+48 silly root writing new entry: "## [0.0.23-alpha.4](https://github.com/qinzhiwei1993/lerna-repo-test/compare/v0.0.23-alpha.3...v0.0.23-alpha.4) (2020-09-07)\n\n**Note:** Version bump only for package root\n\n\n\n"
 49 verbose root wrote /Users/qinzhiwei/IT/git/learn/lerna/CHANGELOG.md
 50 silly lifecycle No script for "version" in "root", continuing
 51 silly gitAdd [ 'packages/l-cli/package.json',
 51 silly gitAdd   'packages/l-cli/CHANGELOG.md',
 51 silly gitAdd   'CHANGELOG.md',
 51 silly gitAdd   'lerna.json' ]
-52 silly gitCommit chore(release): publish v0.0.23-alpha.3
-53 verbose git [ 'commit', '-m', 'chore(release): publish v0.0.23-alpha.3' ]
-54 silly gitTag v0.0.23-alpha.3
-55 verbose git [ 'tag', 'v0.0.23-alpha.3', '-m', 'v0.0.23-alpha.3' ]
+52 silly gitCommit chore(release): publish v0.0.23-alpha.4
+53 verbose git [ 'commit', '-m', 'chore(release): publish v0.0.23-alpha.4' ]
+54 silly gitTag v0.0.23-alpha.4
+55 verbose git [ 'tag', 'v0.0.23-alpha.4', '-m', 'v0.0.23-alpha.4' ]
 56 silly lifecycle No script for "postversion" in "@qinzhiwei1993/l-cli", continuing
 57 silly lifecycle No script for "postversion" in "root", continuing
 58 info git Pushing tags...
