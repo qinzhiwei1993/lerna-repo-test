@@ -1,7 +1,7 @@
 {
   "useWorkspaces": true,
   "npmClient": "yarn",
-  "version": "0.0.21",
+  "version": "0.0.22-alpha.0",
   "packages": [
     "packages/*"
   ],
@@ -29,5 +29,9 @@
     },
     "cacheDir": ".changelog"
   },
-  "ignoreChanges": ["**/__fixtures__/**", "**/__tests__/**", "**/*.md"]
+  "ignoreChanges": [
+    "**/__fixtures__/**",
+    "**/__tests__/**",
+    "**/*.md"
+  ]
 }
