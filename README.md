@@ -593,7 +593,7 @@ You must still use the `--yes` flag to avoid all prompts.
 当一个package为**预发版本**时，不使用上述标记，使用`lerna version --conventional-commits`，也会按照预发版本升级继续升级当前package。
 
 ![lerna la](./images/WX20200907-150143@2x.png)
-![lerna version --conventional-commits](./images/WX20200907-150143@2x.png)
+![lerna version --conventional-commits](./images/WX20200907-150352@2x.png)
 
 #### Command Options
 
@@ -682,9 +682,9 @@ lerna version --conventional-commits --conventional-graduate
 "升级"一个包意味着将一个预发布的包升级为发布版本，例如`package-1@1.0.0-alpha.0 => package-1@1.0.0`。
 
 
-> 注意: 当指定包时，指定包的依赖项将被释放，但不会被“升级”
+> 注意: 当指定包时，指定包的依赖项将被释放，但不会被“升级”。必须和`--conventional-commits`一起使用
 
-### `--conventional-prerelease`
+##### `--conventional-prerelease`
 
 ```sh
 lerna version --conventional-commits --conventional-prerelease=package-2,package-4
@@ -693,7 +693,7 @@ lerna version --conventional-commits --conventional-prerelease=package-2,package
 lerna version --conventional-commits --conventional-prerelease
 ```
 
-When run with this flag, `lerna version` will release with prerelease versions the specified packages (comma-separated) or all packages using `*`. Releases all unreleased changes as pre(patch/minor/major/release) by prefixing the version recommendation from `conventional-commits` with `pre`, eg. if present changes include a feature commit, the recommended bump will be `minor`, so this flag will result in a `preminor` release. If changes are present for packages that are not specified (if specifying packages), or for packages that are already in prerelease, those packages will be versioned as they normally would using `--conventional-commits`.
+当使用该标记时，`lerna version`将会以预发布的版本发布指定的package（用逗号分隔）或者使用`*`指定全部package。
 
 ### `--create-release <type>`
 
