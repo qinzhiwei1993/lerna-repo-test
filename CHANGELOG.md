@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.23-alpha.6](https://github.com/qinzhiwei1993/lerna-repo-test/compare/v0.0.23-alpha.5...v0.0.23-alpha.6) (2020-09-07)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 ## [0.0.23-alpha.5](https://github.com/qinzhiwei1993/lerna-repo-test/compare/v0.0.23-alpha.4...v0.0.23-alpha.5) (2020-09-07)
 
 **Note:** Version bump only for package root
