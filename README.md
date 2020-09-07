@@ -587,10 +587,13 @@ You must still use the `--yes` flag to avoid all prompts.
 
 对于使用常规提交的项目，可以使用如下标记管理预发布版本：
 
-- **[`--conventional-prerelease`](#--conventional-prerelease):** 发布当前变更为预发布版本
-- **[`--conventional-graduate`](#--conventional-graduate):** 升级预发布版本为稳定版
+- **[`--conventional-prerelease`](#--conventional-prerelease):** 发布当前变更为预发布版本（即便采用的是固定模式，也会单独升级该package）
+- **[`--conventional-graduate`](#--conventional-graduate):** 升级预发布版本为稳定版（即便采用的是固定模式，也会单独升级该package）
 
-Running `lerna version --conventional-commits` without the above flags will release current changes as prerelease only if the version is already in prerelease.
+当一个package为**预发版本**时，不使用上述标记，使用`lerna version --conventional-commits`，也会按照预发版本升级继续升级当前package。
+
+![lerna la](./images/WX20200907-150143@2x.png)
+![lerna version --conventional-commits](./images/WX20200907-150143@2x.png)
 
 #### Command Options
 
