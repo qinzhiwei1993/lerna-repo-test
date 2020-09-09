@@ -744,11 +744,7 @@ If the preset exports a builder function (e.g. `conventional-changelog-conventio
 lerna version --exact
 ```
 
-When run with this flag, `lerna version` will specify updated dependencies in updated packages exactly (with no punctuation), instead of as semver compatible (with a `^`).
-
-For more information, see the package.json [dependencies](https://docs.npmjs.com/files/package.json#dependencies) documentation.
-
-### `--force-publish`
+##### `--force-publish`
 
 ```sh
 lerna version --force-publish=package-2,package-4
@@ -757,27 +753,27 @@ lerna version --force-publish=package-2,package-4
 lerna version --force-publish
 ```
 
-When run with this flag, `lerna version` will force publish the specified packages (comma-separated) or all packages using `*`.
+强制更新版本
 
-> This will skip the `lerna changed` check for changed packages and forces a package that didn't have a `git diff` change to be updated.
+> 这个操作将跳过`lerna changed`检查，即便package没有做任何变更也会更新版本
 
-### `--git-remote <name>`
+##### `--git-remote <name>`
 
 ```sh
 lerna version --git-remote upstream
 ```
 
-When run with this flag, `lerna version` will push the git changes to the specified remote instead of `origin`.
+将本地`commit`push到指定的远程残酷，默认是`origin`
 
-### `--ignore-changes`
+##### `--ignore-changes`
 
-Ignore changes in files matched by glob(s) when detecting changed packages.
+变更检测时忽略的文件
 
 ```sh
 lerna version --ignore-changes '**/*.md' '**/__tests__/**'
 ```
 
-This option is best specified as root `lerna.json` configuration, both to avoid premature shell evaluation of the globs and to share the config with `lerna diff` and `lerna changed`:
+建议在根目录`lerna.json`中配置：
 
 ```json
 {
@@ -785,28 +781,22 @@ This option is best specified as root `lerna.json` configuration, both to avoid 
 }
 ```
 
-Pass `--no-ignore-changes` to disable any existing durable configuration.
+`--no-ignore-changes` 禁止任何现有的忽略配置：
 
-> In the following cases, a package will always be published, regardless of this option:
->
-> 1. The latest release of the package is a `prerelease` version (i.e. `1.0.0-alpha`, `1.0.0–0.3.7`, etc.).
-> 2. One or more linked dependencies of the package have changed.
+##### `--ignore-scripts`
 
-### `--ignore-scripts`
 
-When passed, this flag will disable running [lifecycle scripts](#lifecycle-scripts) during `lerna version`.
+禁止[lifecycle scripts](#lifecycle-scripts)
 
-### `--include-merged-tags`
+##### `--include-merged-tags`
 
 ```sh
 lerna version --include-merged-tags
 ```
 
-Include tags from merged branches when detecting changed packages.
+##### `--message <msg>`
 
-### `--message <msg>`
-
-This option is aliased to `-m` for parity with `git commit`.
+`-m`别名，等价于`git commit -m `
 
 ```sh
 lerna version -m "chore(release): publish %s"
@@ -823,15 +813,7 @@ lerna version -m "chore(release): publish"
 # - package-2@1.5.4"
 ```
 
-When run with this flag, `lerna version` will use the provided message when committing the version updates
-for publication. Useful for integrating lerna into projects that expect commit messages to adhere
-to certain guidelines, such as projects which use [commitizen](https://github.com/commitizen/cz-cli) and/or [semantic-release](https://github.com/semantic-release/semantic-release).
-
-If the message contains `%s`, it will be replaced with the new global version version number prefixed with a "v".
-If the message contains `%v`, it will be replaced with the new global version version number without the leading "v".
-Note that this placeholder interpolation only applies when using the default "fixed" versioning mode, as there is no "global" version to interpolate when versioning independently.
-
-This can be configured in lerna.json, as well:
+也可以在`lerna.json`配置：
 
 ```json
 {
@@ -843,60 +825,52 @@ This can be configured in lerna.json, as well:
 }
 ```
 
-### `--no-changelog`
+##### `--no-changelog`
 
 ```sh
 lerna version --conventional-commits --no-changelog
 ```
+不生成`CHANGELOG.md`。
 
-When using `conventional-commits`, do not generate any `CHANGELOG.md` files.
+> 注意：不可以和[`--create-release`](#--create-release-type)一起使用
 
-> NOTE: When using this option, you cannot pass [`--create-release`](#--create-release-type).
+##### `--no-commit-hooks`
 
-### `--no-commit-hooks`
+默认情况下，`lerna version`会运行`git commit hooks`。使用该标记，阻止`git commit hooks`运行。
 
-By default, `lerna version` will allow git commit hooks to run when committing version changes.
-Pass `--no-commit-hooks` to disable this behavior.
 
-This option is analogous to the `npm version` option [`--commit-hooks`](https://docs.npmjs.com/misc/config#commit-hooks), just inverted.
 
-### `--no-git-tag-version`
+##### `--no-git-tag-version`
 
-By default, `lerna version` will commit changes to package.json files and tag the release.
-Pass `--no-git-tag-version` to disable the behavior.
+默认情况下，`lerna version` 会提交变更到`package.json`文件，并打标签。使用该标记会阻止该默认行为。
 
-This option is analogous to the `npm version` option [`--git-tag-version`](https://docs.npmjs.com/misc/config#git-tag-version), just inverted.
 
-### `--no-granular-pathspec`
+##### `--no-granular-pathspec`
 
-By default, `lerna version` will `git add` _only_ the leaf package manifests (and possibly changelogs) that have changed during the versioning process. This yields the equivalent of `git add -- packages/*/package.json`, but tailored to _exactly_ what changed.
+默认情况下，在创建版本的过程中，会执行`git add -- packages/*/package.json`操作。
 
-If you **know** you need different behavior, you'll understand: Pass `--no-granular-pathspec` to make the git command _literally_ `git add -- .`. By opting into this [pathspec](https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec), you **MUST HAVE _ALL_ SECRETS AND BUILD OUTPUT PROPERLY IGNORED, _OR IT WILL BE COMMITTED AND PUSHED_**.
+也可以更改默认行为，提交除了`package.json`以外的信息，前提是必须做好敏感数据的保护。
 
-This option makes the most sense configured in lerna.json, as you really don't want to mess it up:
 
 ```json
+// leran.json
 {
   "version": "independent",
   "granularPathspec": false
 }
 ```
 
-The root-level configuration is intentional, as this also covers the [identically-named option in `lerna publish`](https://github.com/lerna/lerna/tree/master/commands/publish#--no-granular-pathspec).
 
-### `--no-private`
+##### `--no-private`
 
-By default, `lerna version` will include private packages when choosing versions, making commits, and tagging releases.
-Pass `--no-private` to disable this behavior.
+排除`private:true`的package
 
-Note that this option does _not_ exclude [private scoped packages](https://docs.npmjs.com/about-private-packages), only those with a [`"private": true` field](https://docs.npmjs.com/configuring-npm/package-json.html#private) in their package.json file.
-
-### `--no-push`
+##### `--no-push`
 
 By default, `lerna version` will push the committed and tagged changes to the configured [git remote](#--git-remote-name).
 Pass `--no-push` to disable this behavior.
 
-### `--preid`
+##### `--preid`
 
 ```sh
 lerna version prerelease
@@ -907,27 +881,23 @@ lerna version prepatch --preid next
 # uses the next semantic prerelease version with a specific prerelease identifier, e.g.
 # 1.0.0 => 1.0.1-next.0
 ```
+版本语义化
 
-When run with this flag, `lerna version` will increment `premajor`, `preminor`, `prepatch`, or `prerelease` semver
-bumps using the specified [prerelease identifier](http://semver.org/#spec-item-9).
+##### `--sign-git-commit`
 
-### `--sign-git-commit`
+`npm version` [option](https://docs.npmjs.com/misc/config#sign-git-commit)
 
-This option is analogous to the `npm version` [option](https://docs.npmjs.com/misc/config#sign-git-commit) of the same name.
+##### `--sign-git-tag`
 
-### `--sign-git-tag`
+ `npm version` [option](https://docs.npmjs.com/misc/config#sign-git-tag)
 
-This option is analogous to the `npm version` [option](https://docs.npmjs.com/misc/config#sign-git-tag) of the same name.
+##### `--force-git-tag`
 
-### `--force-git-tag`
+取代已存在的`tag`
 
-This option replaces any existing tag instead of failing.
+##### `--tag-version-prefix`
 
-### `--tag-version-prefix`
-
-This option allows to provide custom prefix instead of the default one: `v`.
-
-Keep in mind that currently you have to supply it twice: for `version` command and for `publish` command:
+自定义版本前缀。默认为`v`
 
 ```bash
 # locally
@@ -936,37 +906,19 @@ lerna version --tag-version-prefix=''
 lerna publish from-git --tag-version-prefix=''
 ```
 
-### `--yes`
+##### `--yes`
 
 ```sh
 lerna version --yes
 # skips `Are you sure you want to publish these packages?`
 ```
 
-When run with this flag, `lerna version` will skip all confirmation prompts.
-Useful in [Continuous integration (CI)](https://en.wikipedia.org/wiki/Continuous_integration) to automatically answer the publish confirmation prompt.
+跳过所有提示
 
-## Deprecated Options
 
-### `--cd-version`
+#### 生成更新日志`CHANGELOG.md`
 
-Pass the semver keyword to the [`bump`](#semver-bump) positional instead.
-
-### `--repo-version`
-
-Pass an explicit version number to the [`bump`](#semver-bump) positional instead.
-
-### `--skip-git`
-
-Use [`--no-git-tag-version`](#--no-git-tag-version) and [`--no-push`](#--no-push) instead.
-
-> NOTE: This option **does not** restrict _all_ git commands from being executed. `git` is still required by `lerna version`.
-
-## Tips
-
-### Generating Initial Changelogs
-
-If you start using the [`--conventional-commits`](#--conventional-commits) option _after_ the monorepo has been active for awhile, you can still generate changelogs for previous releases using [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli#readme) and [`lerna exec`](https://github.com/lerna/lerna/tree/master/commands/exec#readme):
+如果你在使用多包存储一段时间后，开始使用[`--conventional-commits`](#--conventional-commits)标签，你也可以使用[`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli#readme) 和 [`lerna exec`](https://github.com/lerna/lerna/tree/master/commands/exec#readme)为之前的版本创建changelog：
 
 ```bash
 # Lerna does not actually use conventional-changelog-cli, so you need to install it temporarily
@@ -985,7 +937,7 @@ npx lerna exec --concurrency 1 --stream -- 'conventional-changelog --preset angu
 
 If you use a custom [`--changelog-preset`](#--changelog-preset), you should change `--preset` value accordingly in the example above.
 
-## Lifecycle Scripts
+#### Lifecycle Scripts
 
 ```js
 // preversion:  Run BEFORE bumping the package version.
@@ -1009,8 +961,6 @@ Lerna will run [npm lifecycle scripts](https://docs.npmjs.com/misc/scripts#descr
 8. Run `postversion` lifecycle in root
 9. Push commit and tag(s) to remote, if [enabled](#--no-push)
 10. Create release, if [enabled](#--create-release-type)
-
-
 
 
 
