@@ -2,11 +2,15 @@
   "name": "root",
   "version": "1.0.0",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
+    "conventional-changelog-cli": "^2.1.0",
     "lerna": "^3.22.1"
   },
   "scripts": {
-    "bootstrap": "npx lerna bootstrap"
+    "bootstrap": "npx lerna bootstrap",
+    "genChangelog": "conventional-changelog --preset angular --release-count 0 --outfile ./CHANGELOG.md --verbose && exec --concurrency 1 --stream -- 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md --verbose'"
   }
 }
