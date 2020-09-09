@@ -1345,8 +1345,8 @@ lerna publish --canary --yes
 - `--scope` 为匹配到的 package 安装依赖 [字符串]
 - `--ignore` 和上面正相反 [字符串]
 - `--no-private` 排除 private 的 packcage
-- `--since` 包含从指定的[ref]依赖改变的 packages，如果没有[ref]，默认是最近的 tag ?
-- `--exclude-dependents` 当使用—since 运行命令时，排除所有传递依赖项，覆盖默认的“changed”算法 [布尔] ?
-- `--include-dependents` 启动命令式包含所有传递的依赖项，无视 --scope, --ignore, or --since [布尔] ?
-- `--include-dependencies` 启动命令式包含所有传递的依赖项，无视 --scope, --ignore, or --since [布尔] ?
-- `--include-merged-tags` 在使用—since 运行命令时，包含来自合并分支的标记 [布尔] ?
+- `--since` 包含从指定的[ref]依赖改变的 packages，如果没有[ref]，默认是最近的 tag 
+- `--exclude-dependents` 当使用—since 运行命令时，排除所有传递依赖项，覆盖默认的“changed”算法 [布尔] 
+- `--include-dependents` 启动命令式包含所有传递的依赖项，无视 --scope, --ignore, or --since [布尔] 
+- `--include-dependencies` 启动命令式包含所有传递的依赖项，无视 --scope, --ignore, or --since [布尔] 
+- `--include-merged-tags` 在使用—since 运行命令时，包含来自合并分支的标记 [布尔] 
