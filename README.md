@@ -102,10 +102,9 @@ Workspaces can only be enabled in private projects.
 - `--tag` Configure the package's publishConfig.tag [字符串]
 - `-y, --yes` Skip all prompts, accepting default values [布尔]
 
-
 ### [lerna add](https://github.com/lerna/lerna/tree/master/commands/add#readme)
 
-为匹配的package添加本地或者远程依赖，一次只能添加一个依赖
+为匹配的 package 添加本地或者远程依赖，一次只能添加一个依赖
 
 ```sh
 $ lerna add <package>[@version] [--dev] [--exact] [--peer]
@@ -113,18 +112,18 @@ $ lerna add <package>[@version] [--dev] [--exact] [--peer]
 
 运行该命令时做的事情:
 
-1. 为匹配到的package添加依赖
-2. 更改每个package下的package.json中的依赖项属性
-
+1. 为匹配到的 package 添加依赖
+2. 更改每个 package 下的 package.json 中的依赖项属性
 
 #### Command Options
 
 以下几个选项的含义和`npm install`时一致
+
 - `--dev`
 - `--exact`
 - `--peer`
 - `--registry <url>`
-- `--no-bootstrap`  跳过 `lerna bootstrap`，只在更改对应的package的package.json中的属性
+- `--no-bootstrap` 跳过 `lerna bootstrap`，只在更改对应的 package 的 package.json 中的属性
 
 [`所有的过滤选项都支持`](#过滤选项)
 
@@ -150,8 +149,6 @@ lerna add module-1
 lerna add babel-core
 ```
 
-
-
 ### [lerna bootstrap](https://github.com/lerna/lerna/blob/master/commands/bootstrap#readme)
 
 将本地 package 链接在一起并安装依赖
@@ -173,15 +170,13 @@ lerna add babel-core
 - `--force-local` 无论版本范围是否匹配，强制本地同级链接 [布尔] ?
 - `--contents` 子目录用作任何链接的源。必须适用于所有包装 [字符串][默认值: .] ?
 
-
 ### [lerna link](https://github.com/lerna/lerna/tree/master/commands/link#readme)
 
-将本地相互依赖的package相互连接。例如lerna1依赖lerna2，且版本号刚好为本地的lerna2，那么会在lerna1下node_modules中建立软连指向lerna2
+将本地相互依赖的 package 相互连接。例如 lerna1 依赖 lerna2，且版本号刚好为本地的 lerna2，那么会在 lerna1 下 node_modules 中建立软连指向 lerna2
 
 #### Command Options
 
-- --force-local 无论本地package是否满足版本需求，都链接本地的
-
+- --force-local 无论本地 package 是否满足版本需求，都链接本地的
 
 ```json
 // 指定软链到package的特定目录
@@ -190,21 +185,20 @@ lerna add babel-core
   }
 ```
 
-
 ### [lerna list](https://github.com/lerna/lerna/tree/master/commands/list#readme)
 
-#### list子命令
+#### list 子命令
 
-- `lerna ls`: 等同于 `lerna list`本身，输出项目下所有的package
-- `lerna ll`: 输出项目下所有package名称、当前版本、所在位置
-- `lerna la`: 输出项目下所有package名称、当前版本、所在位置，包括private package
+- `lerna ls`: 等同于 `lerna list`本身，输出项目下所有的 package
+- `lerna ll`: 输出项目下所有 package 名称、当前版本、所在位置
+- `lerna la`: 输出项目下所有 package 名称、当前版本、所在位置，包括 private package
 
 #### Command Options
 
 - [`--json`](#--json)
 - [`--ndjson`](#--ndjson)
 - [`-a`, `--all`](#--all)
-- [`-l`, `--long`](#--long) 
+- [`-l`, `--long`](#--long)
 - [`-p`, `--parseable`](#--parseable)
 - [`--toposort`](#--toposort)
 - [`--graph`](#--graph)
@@ -213,7 +207,7 @@ lerna add babel-core
 
 ##### `--json`
 
-以json形式展示
+以 json 形式展示
 
 ```sh
 $ lerna ls --json
@@ -247,7 +241,7 @@ $ lerna ls --ndjson
 
 Alias: `-a`
 
-显示默认隐藏的private package
+显示默认隐藏的 private package
 
 ```sh
 $ lerna ls --all
@@ -313,7 +307,7 @@ package-1
 
 #### `--graph`
 
-将依赖关系图显示为JSON格式的邻接表 [adjacency list](https://en.wikipedia.org/wiki/Adjacency_list).
+将依赖关系图显示为 JSON 格式的邻接表 [adjacency list](https://en.wikipedia.org/wiki/Adjacency_list).
 
 ```sh
 $ lerna ls --graph
@@ -340,8 +334,7 @@ $ lerna ls --graph --all
 
 ### [lerna changed](https://github.com/lerna/lerna/tree/master/commands/changed#readme)
 
-列出自上次发布（打tag）以来本地发生变化的package
-
+列出自上次发布（打 tag）以来本地发生变化的 package
 
 **注意:** `lerna publish`和`lerna version`的`lerna.json`配置同样影响`lerna changed`。 例如 `command.publish.ignoreChanges`.
 
@@ -357,7 +350,7 @@ $ lerna ls --graph --all
 - [`--toposort`](https://github.com/lerna/lerna/tree/master/commands/list#--toposort)
 - [`--graph`](https://github.com/lerna/lerna/tree/master/commands/list#--graph)
 
-lerna不支持[过滤选项](https://www.npmjs.com/package/@lerna/filter-options), 因为`lerna version` or `lerna publish`不支持过滤选项.
+lerna 不支持[过滤选项](https://www.npmjs.com/package/@lerna/filter-options), 因为`lerna version` or `lerna publish`不支持过滤选项.
 
 `lerna changed` 支持 [`lerna version`](https://github.com/lerna/lerna/tree/master/commands/version#options) (the others are irrelevant)的过滤选项：
 
@@ -366,17 +359,15 @@ lerna不支持[过滤选项](https://www.npmjs.com/package/@lerna/filter-options
 - [`--ignore-changes`](https://github.com/lerna/lerna/tree/master/commands/version#--ignore-changes).
 - [`--include-merged-tags`](https://github.com/lerna/lerna/tree/master/commands/version#--include-merged-tags).
 
-
 ### `lerna version`
-
 
 ### [lerna import](https://github.com/lerna/lerna/tree/master/commands/import#readme)
 
 `lerna import <path-to-external-repository>`
 
-将现有的package收集到lerna项目中。可以保留之前的原始提交作者，日期和消息将保留。 
+将现有的 package 收集到 lerna 项目中。可以保留之前的原始提交作者，日期和消息将保留。
 
-**注意**：如果要在一个新的lerna中引入，必须至少有个commit
+**注意**：如果要在一个新的 lerna 中引入，必须至少有个 commit
 
 #### Command Options
 
@@ -388,12 +379,12 @@ lerna不支持[过滤选项](https://www.npmjs.com/package/@lerna/filter-options
 
 `lerna clean`
 
-移除所有packages下的node_modules，并不会移除根目录下的
+移除所有 packages 下的 node_modules，并不会移除根目录下的
 [`所有的过滤选项都支持`](#过滤选项)
 
 ### [lerna diff](https://github.com/lerna/lerna/tree/master/commands/diff#readme)
 
-查看自上次发布（打tag）以来某个package或者所有package的变化
+查看自上次发布（打 tag）以来某个 package 或者所有 package 的变化
 
 ```sh
 $ lerna diff [package]
@@ -405,10 +396,9 @@ $ lerna diff package-name
 
 > Similar to `lerna changed`. This command runs `git diff`.
 
-
 ### [lerna exec](https://github.com/lerna/lerna/tree/master/commands/exec#readme)
 
-在每个package中执行任意命令，用波折号(`--`)分割命令语句
+在每个 package 中执行任意命令，用波折号(`--`)分割命令语句
 
 #### 使用方式
 
@@ -418,7 +408,7 @@ $ lerna exec -- rm -rf ./node_modules
 $ lerna exec -- protractor conf.js
 ```
 
-可以通过`LERNA_PACKAGE_NAME`变量获取当前package名称：
+可以通过`LERNA_PACKAGE_NAME`变量获取当前 package 名称：
 
 ```sh
 $ lerna exec -- npm view \$LERNA_PACKAGE_NAME
@@ -480,11 +470,11 @@ $ lerna exec --no-bail <command>
 
 - `--no-prefix`
 
-在输出中不显示package的名称
+在输出中不显示 package 的名称
 
 - `--profile`
 
-生成一个json文件，可以在chrome浏览器（`devtools://devtools/bundled/devtools_app.html`）查看性能分析。通过配置`--concurrenty`可以开启固定数量的子进程数量
+生成一个 json 文件，可以在 chrome 浏览器（`devtools://devtools/bundled/devtools_app.html`）查看性能分析。通过配置`--concurrenty`可以开启固定数量的子进程数量
 
 ![lerna exec --stream -- babel src -d lib](./images/WX20200828-175558@2x.png)
 
@@ -504,7 +494,7 @@ $ lerna exec --profile --profile-location=logs/profile/ -- <command>
 
 ### [lerna run](https://github.com/lerna/lerna/tree/master/commands/run#readme)
 
-在每个package中运行npm脚本
+在每个 package 中运行 npm 脚本
 
 #### 使用方法
 
@@ -517,8 +507,7 @@ $ lerna run build
 $ lerna run --parallel watch
 ```
 
-
-#### Command Options 
+#### Command Options
 
 - `--npm-client <client>`
 
@@ -542,12 +531,10 @@ $ lerna run build --npm-client=yarn
 
 - 其余同`lerna exec`
 
-
-
 ### [lerna version](https://github.com/lerna/lerna/tree/master/commands/version#readme)
 
 > 生成新的唯一版本号
-> bumm version：在使用类似github程序时，升级版本号到一个新的唯一值
+> bumm version：在使用类似 github 程序时，升级版本号到一个新的唯一值
 
 #### 使用方法
 
@@ -557,17 +544,11 @@ lerna version patch # 语义关键字
 lerna version       # 从提示中选择
 ```
 
-
 当执行时，该命令做了一下事情:
 
-1.识别从上次打标记发布以来发生变更的package
-2.版本提示
-3.修改package的元数据反映新的版本，在根目录和每个package中适当运行[lifecycle scripts](#lifecycle-scripts)
-4.在git上提交改变并对该次提交打标记(`git commit` & `git tag`)
-5.提交到远程仓库(`git push`)
+1.识别从上次打标记发布以来发生变更的 package 2.版本提示 3.修改 package 的元数据反映新的版本，在根目录和每个 package 中适当运行[lifecycle scripts](#lifecycle-scripts) 4.在 git 上提交改变并对该次提交打标记(`git commit` & `git tag`) 5.提交到远程仓库(`git push`)
 
 ![lerna version](./images/WX20200904-153703@2x.png)
-
 
 #### Positionals
 
@@ -583,14 +564,14 @@ You must still use the `--yes` flag to avoid all prompts.
 
 #### Prerelease
 
-如果某些package是预发布版本(e.g. `2.0.0-beta.3`)，当你运行`lerna version`配合语义化版本时(`major`, `minor`, `patch`)，它将发布之前的预发布版本和自上次发布以来改变过的packcage。
+如果某些 package 是预发布版本(e.g. `2.0.0-beta.3`)，当你运行`lerna version`配合语义化版本时(`major`, `minor`, `patch`)，它将发布之前的预发布版本和自上次发布以来改变过的 packcage。
 
 对于使用常规提交的项目，可以使用如下标记管理预发布版本：
 
-- **[`--conventional-prerelease`](#--conventional-prerelease):** 发布当前变更为预发布版本（即便采用的是固定模式，也会单独升级该package）
-- **[`--conventional-graduate`](#--conventional-graduate):** 升级预发布版本为稳定版（即便采用的是固定模式，也会单独升级该package）
+- **[`--conventional-prerelease`](#--conventional-prerelease):** 发布当前变更为预发布版本（即便采用的是固定模式，也会单独升级该 package）
+- **[`--conventional-graduate`](#--conventional-graduate):** 升级预发布版本为稳定版（即便采用的是固定模式，也会单独升级该 package）
 
-当一个package为**预发版本**时，不使用上述标记，使用`lerna version --conventional-commits`，也会按照预发版本升级继续升级当前package。
+当一个 package 为**预发版本**时，不使用上述标记，使用`lerna version --conventional-commits`，也会按照预发版本升级继续升级当前 package。
 
 ![lerna la](./images/WX20200907-150143@2x.png)
 ![lerna version --conventional-commits](./images/WX20200907-150352@2x.png)
@@ -631,7 +612,6 @@ It is easiest (and recommended) to configure in `lerna.json`, but it is possible
 
 设置可以调用`lerna version`命令的分支白名单，也可以在`lerna.json`中设置
 
-
 ```json
 {
   "command": {
@@ -649,7 +629,7 @@ lerna version --amend
 # commit message is retained, and `git push` is skipped.
 ```
 
-默认情况下如果暂存区有未提交的内容，`lerna version`会失败，需要提前保存本地内容。使用该标记可以较少commit的次数，将当前变更内容随着本次版本变化一次commit。并且不会`git push`
+默认情况下如果暂存区有未提交的内容，`lerna version`会失败，需要提前保存本地内容。使用该标记可以较少 commit 的次数，将当前变更内容随着本次版本变化一次 commit。并且不会`git push`
 
 ##### `--changelog-preset`
 
@@ -657,14 +637,15 @@ lerna version --amend
 lerna version --conventional-commits --changelog-preset angular-bitbucket
 ```
 
-默认情况下，changelog预设设置为[`angular`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular#angular-convention)。在某些情况下，您可能需要使用另一个预置或自定义。
+默认情况下，changelog 预设设置为[`angular`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular#angular-convention)。在某些情况下，您可能需要使用另一个预置或自定义。
 
 ##### `--conventional-commits`
 
 ```sh
 lerna version --conventional-commits
 ```
-当使用这个标志运行时，lerna版本将使用[传统的提交规范/Conventional Commits Specification](https://conventionalcommits.org/)来[确定版本]((https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-recommended-bump)并生成[CHANGELOG.md](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli)。
+
+当使用这个标志运行时，lerna 版本将使用[传统的提交规范/Conventional Commits Specification](https://conventionalcommits.org/)来[确定版本]((https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-recommended-bump)并生成[CHANGELOG.md](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli)。
 
 传入 [`--no-changelog`](#--no-changelog) 将阻止生成或者更新`CHANGELOG.md`.
 
@@ -677,10 +658,9 @@ lerna version --conventional-commits --conventional-graduate=package-2,package-4
 lerna version --conventional-commits --conventional-graduate
 ```
 
-但使用该标记时，`lerna vesion`将升级指定的package（用逗号分隔）或者使用`*`指定全部package。和`--force-publish`很像，无论当前的HEAD是否发布，该命令都会起作用，任何没有预发布的package将会被忽略。如果未指定的包(如果指定了包)或未预先发布的包发生了更改，那么这些包将按照它们通常使用的`--conventional-commits`进行版本控制。
+但使用该标记时，`lerna vesion`将升级指定的 package（用逗号分隔）或者使用`*`指定全部 package。和`--force-publish`很像，无论当前的 HEAD 是否发布，该命令都会起作用，任何没有预发布的 package 将会被忽略。如果未指定的包(如果指定了包)或未预先发布的包发生了更改，那么这些包将按照它们通常使用的`--conventional-commits`进行版本控制。
 
 "升级"一个包意味着将一个预发布的包升级为发布版本，例如`package-1@1.0.0-alpha.0 => package-1@1.0.0`。
-
 
 > 注意: 当指定包时，指定包的依赖项将被释放，但不会被“升级”。必须和`--conventional-commits`一起使用
 
@@ -693,7 +673,7 @@ lerna version --conventional-commits --conventional-prerelease=package-2,package
 lerna version --conventional-commits --conventional-prerelease
 ```
 
-当使用该标记时，`lerna version`将会以预发布的版本发布指定的package（用逗号分隔）或者使用`*`指定全部package。
+当使用该标记时，`lerna version`将会以预发布的版本发布指定的 package（用逗号分隔）或者使用`*`指定全部 package。
 
 ##### `--create-release <type>`
 
@@ -702,15 +682,15 @@ lerna version --conventional-commits --create-release github
 lerna version --conventional-commits --create-release gitlab
 ```
 
-当使用此标志时，`lerna version`会基于改变的package创建一个官方正式的GitHub或GitLab版本记录。需要传递`--conventional-commits`去创建changlog。
+当使用此标志时，`lerna version`会基于改变的 package 创建一个官方正式的 GitHub 或 GitLab 版本记录。需要传递`--conventional-commits`去创建 changlog。
 
-GithuB认证，以下环境变量需要被定义。
+GithuB 认证，以下环境变量需要被定义。
 
 - `GH_TOKEN` (required) - Your GitHub authentication token (under Settings > Developer settings > Personal access tokens).
 - `GHE_API_URL` - When using GitHub Enterprise, an absolute URL to the API.
 - `GHE_VERSION` - When using GitHub Enterprise, the currently installed GHE version. [Supports the following versions](https://github.com/octokit/plugin-enterprise-rest.js).
 
-GitLab认证，以下环境变量需要被定义。
+GitLab 认证，以下环境变量需要被定义。
 
 - `GL_TOKEN` (required) - Your GitLab authentication token (under User Settings > Access Tokens).
 - `GL_API_URL` - An absolute URL to the API, including the version. (Default: https://gitlab.com/api/v4)
@@ -755,7 +735,7 @@ lerna version --force-publish
 
 强制更新版本
 
-> 这个操作将跳过`lerna changed`检查，即便package没有做任何变更也会更新版本
+> 这个操作将跳过`lerna changed`检查，即便 package 没有做任何变更也会更新版本
 
 ##### `--git-remote <name>`
 
@@ -763,7 +743,7 @@ lerna version --force-publish
 lerna version --git-remote upstream
 ```
 
-将本地`commit`push到指定的远程残酷，默认是`origin`
+将本地`commit`push 到指定的远程残酷，默认是`origin`
 
 ##### `--ignore-changes`
 
@@ -784,7 +764,6 @@ lerna version --ignore-changes '**/*.md' '**/__tests__/**'
 `--no-ignore-changes` 禁止任何现有的忽略配置：
 
 ##### `--ignore-scripts`
-
 
 禁止[lifecycle scripts](#lifecycle-scripts)
 
@@ -830,6 +809,7 @@ lerna version -m "chore(release): publish"
 ```sh
 lerna version --conventional-commits --no-changelog
 ```
+
 不生成`CHANGELOG.md`。
 
 > 注意：不可以和[`--create-release`](#--create-release-type)一起使用
@@ -838,19 +818,15 @@ lerna version --conventional-commits --no-changelog
 
 默认情况下，`lerna version`会运行`git commit hooks`。使用该标记，阻止`git commit hooks`运行。
 
-
-
 ##### `--no-git-tag-version`
 
 默认情况下，`lerna version` 会提交变更到`package.json`文件，并打标签。使用该标记会阻止该默认行为。
-
 
 ##### `--no-granular-pathspec`
 
 默认情况下，在创建版本的过程中，会执行`git add -- packages/*/package.json`操作。
 
 也可以更改默认行为，提交除了`package.json`以外的信息，前提是必须做好敏感数据的保护。
-
 
 ```json
 // leran.json
@@ -860,10 +836,9 @@ lerna version --conventional-commits --no-changelog
 }
 ```
 
-
 ##### `--no-private`
 
-排除`private:true`的package
+排除`private:true`的 package
 
 ##### `--no-push`
 
@@ -881,6 +856,7 @@ lerna version prepatch --preid next
 # uses the next semantic prerelease version with a specific prerelease identifier, e.g.
 # 1.0.0 => 1.0.1-next.0
 ```
+
 版本语义化
 
 ##### `--sign-git-commit`
@@ -889,7 +865,7 @@ lerna version prepatch --preid next
 
 ##### `--sign-git-tag`
 
- `npm version` [option](https://docs.npmjs.com/misc/config#sign-git-tag)
+`npm version` [option](https://docs.npmjs.com/misc/config#sign-git-tag)
 
 ##### `--force-git-tag`
 
@@ -915,10 +891,9 @@ lerna version --yes
 
 跳过所有提示
 
-
 #### 生成更新日志`CHANGELOG.md`
 
-如果你在使用多包存储一段时间后，开始使用[`--conventional-commits`](#--conventional-commits)标签，你也可以使用[`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli#readme) 和 [`lerna exec`](https://github.com/lerna/lerna/tree/master/commands/exec#readme)为之前的版本创建changelog：
+如果你在使用多包存储一段时间后，开始使用[`--conventional-commits`](#--conventional-commits)标签，你也可以使用[`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli#readme) 和 [`lerna exec`](https://github.com/lerna/lerna/tree/master/commands/exec#readme)为之前的版本创建 changelog：
 
 ```bash
 # Lerna does not actually use conventional-changelog-cli, so you need to install it temporarily
@@ -962,8 +937,6 @@ Lerna will run [npm lifecycle scripts](https://docs.npmjs.com/misc/scripts#descr
 9. Push commit and tag(s) to remote, if [enabled](#--no-push)
 10. Create release, if [enabled](#--create-release-type)
 
-
-
 ### [lerna publish](https://github.com/lerna/lerna/tree/master/commands/publish#readme)
 
 ```sh
@@ -974,27 +947,25 @@ lerna publish from-package # 显示的发布当前版本在注册表中（regist
 
 运行时，该命令执行以下操作之一：
 
-- 发布自上次发版依赖更新的packages（背后调用`lerna version`判断）
-  - 这是2.x版本遗留的表现
-- 显示的发布在当前提交中打了tag的packages
-- 显示的发布在最新的提交中当前版本在注册表中（registry）不存在的packages（之前没有发布到npm上） 
-- 发布在之前提交中未版本化的进行过金丝雀部署的packages([`canary release`](https://www.dazhuanlan.com/2019/09/27/5d8d956b87584/))
+- 发布自上次发版依赖更新的 packages（背后调用`lerna version`判断）
+  - 这是 2.x 版本遗留的表现
+- 显示的发布在当前提交中打了 tag 的 packages
+- 显示的发布在最新的提交中当前版本在注册表中（registry）不存在的 packages（之前没有发布到 npm 上）
+- 发布在之前提交中未版本化的进行过金丝雀部署的 packages([`canary release`](https://www.dazhuanlan.com/2019/09/27/5d8d956b87584/))
 
-> Lerna无法发布私有的packcage(`"private":true`)
+> Lerna 无法发布私有的 packcage(`"private":true`)
 
 在所有发布操作期间，适当的生命周期脚本（[`lifecycle scripts`](https://github.com/lerna/lerna/tree/master/commands/publish#lifecycle-scripts)）在根目录和每个包中被调用(除非被`--ignore-scripts`禁用)。
 
-
-#### Positionals 
+#### Positionals
 
 - bump `from-git`
 
-除了`lerna version`支持的semver关键字之外，`lerna publish`还支持`from-git`关键字。这将识别`lerna version`标记的包，并将它们发布到npm。这在CI场景中非常有用，在这种场景中，您希望手动增加版本，但要通过自动化过程一致地发布包内容本身
+除了`lerna version`支持的 semver 关键字之外，`lerna publish`还支持`from-git`关键字。这将识别`lerna version`标记的包，并将它们发布到 npm。这在 CI 场景中非常有用，在这种场景中，您希望手动增加版本，但要通过自动化过程一致地发布包内容本身
 
 - bump `from-package`
 
 与`from-git`关键字相似，除了要发布的软件包列表是通过检查每个`package.json`并确定注册表中是否没有任何软件包版本来确定的。 注册表中不存在的任何版本都将被发布。 当先前的`lerna publish`未能将所有程序包发布到注册表时，此功能很有用。
-
 
 #### Command Options
 
@@ -1019,9 +990,6 @@ lerna publish from-package # 显示的发布当前版本在注册表中（regist
 - [`--temp-tag`](#--temp-tag)
 - [`--yes`](#--yes)
 
-
-
-
 ##### `--canary`
 
 ```sh
@@ -1038,14 +1006,13 @@ lerna publish --canary preminor
 # 1.0.0 => 1.1.0-alpha.0+${SHA}
 ```
 
-针对最近一次提交发生改变的package，做更精细的版本控制。类似于金丝雀部署，构建生产环境的容错测试。如果是统一的版本控制，其他package版本号不做升级，只针对变更的package做精准调试。
+针对最近一次提交发生改变的 package，做更精细的版本控制。类似于金丝雀部署，构建生产环境的容错测试。如果是统一的版本控制，其他 package 版本号不做升级，只针对变更的 package 做精准调试。
 
 ![lerna publish --canary](./images/1598864025009.jpg)
 
-
 ##### `--contents <dir>`
 
-子目录发布。子目录中必须包含package.json。
+子目录发布。子目录中必须包含 package.json。
 
 ```sh
 lerna publish --contents dist
@@ -1058,17 +1025,14 @@ lerna publish --contents dist
 lerna publish --dist-tag custom-tag
 ```
 
-自定义npm[发布标签](https://docs.npmjs.com/cli/dist-tag)。默认是`latest`
+自定义 npm[发布标签](https://docs.npmjs.com/cli/dist-tag)。默认是`latest`
 
 该选项可以用来定义[`prerelease`](http://carrot.is/coding/npm_prerelease) 或者 `beta` 版本
-
 
 > **注意**: `npm install my-package` 默认安装的是`latest`版本.
 > 安装其他版本 `npm install my-package@prerelease`.
 
 ![lerna publish --canary](./images/WX20200831-182407@2x.png)
-
-
 
 ##### `--git-head <sha>`
 
@@ -1079,7 +1043,6 @@ lerna publish --dist-tag custom-tag
 ```sh
 lerna publish from-package --git-head ${CODEBUILD_RESOLVED_SOURCE_VERSION}
 ```
-
 
 ##### `--graph-type <all|dependencies>`
 
@@ -1103,8 +1066,6 @@ lerna publish --graph-type all
 
 ![lerna publish --graph-type all](./images/WX20200831-185905@2x.png)
 
-
-
 ##### `--ignore-scripts`
 
 关闭`npm脚本生命周期事件`的触发
@@ -1123,11 +1084,11 @@ lerna publish --legacy-auth aGk6bW9t
 
 ##### `--no-git-reset`
 
-默认情况下，`lerna publish`会把暂存区内容全部提交。即`lerna publish`发布时更改了本地package中的version，也一并提交到git。
+默认情况下，`lerna publish`会把暂存区内容全部提交。即`lerna publish`发布时更改了本地 package 中的 version，也一并提交到 git。
 
 ![lerna publish](./images/WX20200903-183002@2x.png)
 
-未避免上述情况发生，可以使用`--no-git-reset`。这对作为管道配置`--canary`使用时非常有用。例如，已经改变的`package.json`的版本号可能会在下一步操作所用到（例如Docker builds）。
+未避免上述情况发生，可以使用`--no-git-reset`。这对作为管道配置`--canary`使用时非常有用。例如，已经改变的`package.json`的版本号可能会在下一步操作所用到（例如 Docker builds）。
 
 ```sh
 lerna publish --no-git-reset
@@ -1152,29 +1113,27 @@ The root-level configuration is intentional, as this also covers the [identicall
 
 ##### `--no-verify-access`
 
-默认情况下`lerna`会验证已登录用户对即将发布的package的权限。使用此标记将会阻止该默认行为。
+默认情况下`lerna`会验证已登录用户对即将发布的 package 的权限。使用此标记将会阻止该默认行为。
 
-如果你正在使用第三方的不支持`npm access ls-packages`的npm库，需要使用该标记。或者在`lerna.json`中设置`command.publish.verifyAccess`为`false`。
+如果你正在使用第三方的不支持`npm access ls-packages`的 npm 库，需要使用该标记。或者在`lerna.json`中设置`command.publish.verifyAccess`为`false`。
 
 > 谨慎使用
 
 ##### `--otp`
 
-当发布需要双重认证的package时，需要指定[一次性密码](https://docs.npmjs.com/about-two-factor-authentication)
+当发布需要双重认证的 package 时，需要指定[一次性密码](https://docs.npmjs.com/about-two-factor-authentication)
 
 ```sh
 lerna publish --otp 123456
 ```
 
-当开启[npm双重认证](https://docs.npmjs.com/about-two-factor-authentication)后，可以通过配置对account和npm操作的进行二次验证。需要npm版本大于`5.5.0`
+当开启[npm 双重认证](https://docs.npmjs.com/about-two-factor-authentication)后，可以通过配置对 account 和 npm 操作的进行二次验证。需要 npm 版本大于`5.5.0`
 
 [验证工具](https://authy.com/guides/npm/)
 
 ![Two-factor authentication](./images/WX20200902-170413@2x.png)
 
-
-> 密码的有效时长为30s，过期后需要重新输入验证
-
+> 密码的有效时长为 30s，过期后需要重新输入验证
 
 ##### `--preid`
 
@@ -1202,7 +1161,6 @@ lerna publish --pre-dist-tag next
 ```
 
 效果和[`--dist-tag`](#--dist-tag-tag)一样。只适用于发布的预发布版本。
-
 
 ##### `--registry <url>`
 
@@ -1232,10 +1190,9 @@ lerna publish from-git --tag-version-prefix=''
 
 ##### `--temp-tag`
 
+当传递时，这个标志将改变默认的发布过程，首先将所有更改过的包发布到一个临时的 dis tag (' lerna-temp ')中，然后将新版本移动到['--dist-tag '](#——dist-tag-tag)(默认为' latest ')配置的 dist-tag 中。
 
-当传递时，这个标志将改变默认的发布过程，首先将所有更改过的包发布到一个临时的dis tag (' lerna-temp ')中，然后将新版本移动到['--dist-tag '](#——dist-tag-tag)(默认为' latest ')配置的dist-tag中。
-
-这通常是没有必要的，因为Lerna在默认情况下会按照拓扑顺序(所有依赖先于依赖)发布包
+这通常是没有必要的，因为 Lerna 在默认情况下会按照拓扑顺序(所有依赖先于依赖)发布包
 
 ##### `--yes`
 
@@ -1248,14 +1205,13 @@ lerna publish --canary --yes
 
 在[Continuous integration (CI)](https://en.wikipedia.org/wiki/Continuous_integration)很有用，自动回答发布时的确认提示
 
+#### 每个 package 的配置
 
-#### 每个package的配置
-
-每个package可以通过更改[`publishConfig`](https://docs.npmjs.com/files/package.json#publishconfig)，来改变发布时的一些行为。
+每个 package 可以通过更改[`publishConfig`](https://docs.npmjs.com/files/package.json#publishconfig)，来改变发布时的一些行为。
 
 ##### `publishConfig.access`
 
-当发布一个`scope`的package(e.g., `@mycompany/rocks`)时，必须设置[`access`](https://docs.npmjs.com/misc/config#access)：
+当发布一个`scope`的 package(e.g., `@mycompany/rocks`)时，必须设置[`access`](https://docs.npmjs.com/misc/config#access)：
 
 ```json
   "publishConfig": {
@@ -1263,8 +1219,8 @@ lerna publish --canary --yes
   }
 ```
 
-- 如果在没有使用scope的package中使用该属性，将失败
-- 如果你希望保持一个scope的package为私有(i.e., `"restricted"`)，那么就不需要设置
+- 如果在没有使用 scope 的 package 中使用该属性，将失败
+- 如果你希望保持一个 scope 的 package 为私有(i.e., `"restricted"`)，那么就不需要设置
 
   注意，这与在包中设置`"private":true`不一样;如果设置了`private`字段，那么在任何情况下都不会发布该包。
 
@@ -1276,7 +1232,7 @@ lerna publish --canary --yes
   }
 ```
 
-- 也可以通过`--registry`或者在lerna.json中设置`command.publish.registry`进行全局控制
+- 也可以通过`--registry`或者在 lerna.json 中设置`command.publish.registry`进行全局控制
 
 ##### `publishConfig.tag`
 
@@ -1288,7 +1244,7 @@ lerna publish --canary --yes
   }
 ```
 
-- [`--dist-tag`](#--dist-tag-tag)将覆盖每个package中的值
+- [`--dist-tag`](#--dist-tag-tag)将覆盖每个 package 中的值
 - 在使用[--canary]时该值将被忽略
 
 ##### `publishConfig.directory`
@@ -1301,7 +1257,7 @@ lerna publish --canary --yes
   }
 ```
 
-#### npm脚本生命周期
+#### npm 脚本生命周期
 
 ```js
 // prepublish:      Run BEFORE the package is packed and published.
@@ -1313,8 +1269,7 @@ lerna publish --canary --yes
 // postpublish: Run AFTER the package is published.
 ```
 
-`lerna publish`执行时，按如下顺序调用[npm脚本生命周期](https://docs.npmjs.com/misc/scripts#description)：
-
+`lerna publish`执行时，按如下顺序调用[npm 脚本生命周期](https://docs.npmjs.com/misc/scripts#description)：
 
 1. 如果采用隐式版本管理，则运行所有 [version lifecycle scripts](https://github.com/lerna/lerna/tree/master/commands/version#lifecycle-scripts)。
 2. Run `prepublish` lifecycle in root, if [enabled](#--ignore-prepublish)
@@ -1338,15 +1293,65 @@ lerna publish --canary --yes
 10. Run `postpublish` lifecycle in root
 11. Update temporary dist-tag to latest, if [enabled](#--temp-tag)
 
-
-
 ### 过滤选项
 
 - `--scope` 为匹配到的 package 安装依赖 [字符串]
 - `--ignore` 和上面正相反 [字符串]
 - `--no-private` 排除 private 的 packcage
-- `--since` 包含从指定的[ref]依赖改变的 packages，如果没有[ref]，默认是最近的 tag 
-- `--exclude-dependents` 当使用—since 运行命令时，排除所有传递依赖项，覆盖默认的“changed”算法 [布尔] 
-- `--include-dependents` 启动命令式包含所有传递的依赖项，无视 --scope, --ignore, or --since [布尔] 
-- `--include-dependencies` 启动命令式包含所有传递的依赖项，无视 --scope, --ignore, or --since [布尔] 
-- `--include-merged-tags` 在使用—since 运行命令时，包含来自合并分支的标记 [布尔] 
+- `--since` 包含从指定的[ref]依赖改变的 packages，如果没有[ref]，默认是最近的 tag
+- `--exclude-dependents` 当使用—since 运行命令时，排除所有传递依赖项，覆盖默认的“changed”算法 [布尔]
+- `--include-dependents` 启动命令式包含所有传递的依赖项，无视 --scope, --ignore, or --since [布尔]
+- `--include-dependencies` 启动命令式包含所有传递的依赖项，无视 --scope, --ignore, or --since [布尔]
+- `--include-merged-tags` 在使用—since 运行命令时，包含来自合并分支的标记 [布尔]
+
+### 全局选项
+
+- `--loglevel` 打印日志的级别 [字符串] [默认值: info][silly, versbose, info, success, warn, error, slient]
+- `--concurrency` 并行任务时启动的进程数目 [数字] [默认值: 4]
+- `--reject-cycles` 如果 package 之间相互依赖，则失败 [布尔]
+- `--no-progress` 关闭进程进度条 [布尔]
+- `--no-sort` 不遵循拓扑排序 [布尔]
+- `--max-buffer` 设置子命令执行的 buffer(以字节为单位) [数字]
+- `-h, --help ` 显示帮助信息
+- `-v, --version` 显示版本信息
+
+## Concept
+
+### lerna.json
+
+```json
+{
+  "version": "1.1.3", // 版本
+  "npmClient": "npm", // npm客户端
+  "command": {
+    "publish": {
+      "ignoreChanges": ["ignored-file", "*.md"], // 发布检测时忽略的文件
+      "message": "chore(release): publish", // 发布时 tag标记的版本信息
+      "registry": "https://npm.pkg.github.com" // 源
+    },
+    "bootstrap": {
+      "ignore": "component-*", // bootstrap时忽略的文件
+      "npmClientArgs": ["--no-package-lock"], // 命令行参数
+    },
+    "version": {
+      "allowBranch": [ // 允许运行lerna version的分支
+        "master",
+        "feature/*"
+      ],
+      "message": "chore(release): publish %s" // 创建版本时 tag标记的版本信息
+    }
+  },
+  "ignoreChanges": [
+    "**/__fixtures__/**",
+    "**/__tests__/**",
+    "**/*.md"
+  ],
+  "packages": ["packages/*"],// package位置
+}
+```
+
+## Wizard
+
+这里推荐一个新手引导工具[lerna-wizard](https://github.com/szarouski/lerna-wizard)
+
+![lerna-wizard](./images/WX20200909-152126@2x.png)
