@@ -86,6 +86,12 @@ Workspaces can only be enabled in private projects.
 "npmClient": "yarn",
 ```
 
+**hoist:** 提取公共的依赖到根目录的`node_moduels`，可以自定义指定。其余依赖安装的`package/node_modeles`中，可执行文件必须安装在`package/node_modeles`。
+
+**workspaces:** 所有依赖全部在跟目录的`node_moduels`，除了可执行文件
+
+![hoist vs workspaces](./images/WX20200909-170703@2x.png)
+
 ## 常用命令
 
 ### [lerna init](https://github.com/lerna/lerna/blob/master/commands/init#readme)
@@ -171,6 +177,10 @@ lerna add babel-core
 > 3.在 bootstraped packages 中 执行 `npm run prepublish` 
 
 > 4.在 bootstraped packages 中 执行 `npm run prepare`
+
+![lerna bootstrap](./images/WX20200909-171333@2x.png)
+
+![lerna bootstrap](./images/WX20200909-171656@2x.png)
 
 #### Command Options
 
