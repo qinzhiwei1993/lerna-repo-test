@@ -1,19 +1,26 @@
 # lerna
 
-Lerna 是一个工具，它优化了使用 git 和 npm 管理多包存储库的工作流
+最近在看[vue-cli]的源码部分，注意到这一个仓库下维护了多个package，很好奇他是如何在一个repo中管理这些package的。
+
+我们组现在也在使用组件库的方式维护项目间共用的业务代码。有两个组件库，存在依赖的关系，目前联调是通过`npm link`的方式，性能并不好，时常出现卡顿的问题。加上前一段时间组内分享vue3也提到了lerna，于是便决定仔细的调研一下这个工具，为接下里的组件库优化助力。
+
+[lerna](https://github.com/lerna/lerna)的文档还是很详细的,因为全是英文的，考虑到阅读问题，这里我先是自己跑了几个demo，然后做了中文翻译。后续我会出一篇专门的**lerna实战篇**
+
+## lerna 是干什么的？
+
+Lerna 是一个工具，它优化了使用 git 和 npm 管理多包存储库的工作流。
 
 ## 背景
 
-1.将一个大的 package 分割成一些小的 packcage 便于分享
+1.将一个大的 package 分割成一些小的 packcage 便于分享，调试
 
 2.在多个 git 仓库中更改容易变得混乱且难以跟踪
 
 3.在多个 git 仓库中维护测试繁琐
 
-## 优点
+## MultiRepo vs MonoRepo
 
-- 各个包相互独立，便于发版、分享
-- 在同一个存储库便于调试
+![multirepo vs monorepo](./images/WX20200909-163105@2x.png)
 
 ---
 
@@ -37,6 +44,8 @@ mkdir lerna-repo
 cd lerna-repo
 lerna init // 初始化一个lerna项目结构，如果希望各个包使用单独版本号可以加 -i | --independent
 ```
+
+![lerna init](./images/WX20200909-163838@2x.png)
 
 ## 标准的 lerna 目录结构
 
@@ -89,18 +98,18 @@ Workspaces can only be enabled in private projects.
 
 创建一个 packcage
 
-- `--access` When using a scope, set publishConfig.access value [可选值: "public", "restricted"][默认值: public]
-- `--bin` Package has an executable. Customize with --bin <executableName>
-- `--description` Package description [字符串]
-- `--dependencies` A list of package dependencies [数组]
-- `--es-module` Initialize a transpiled ES Module [布尔]
-- `--homepage` The package homepage, defaulting to a subpath of the root pkg.homepage [字符串]
-- `--keywords` A list of package keywords [数组]
-- `--license` The desired package license (SPDX identifier) [字符串][默认值: isc]
-- `--private` Make the new package private, never published to any external registry [布尔]
-- `--registry` Configure the package's publishConfig.registry [字符串]
-- `--tag` Configure the package's publishConfig.tag [字符串]
-- `-y, --yes` Skip all prompts, accepting default values [布尔]
+- `--access` 当使用`scope package`时(@qinzhiwei/lerna)，需要设置此选项 [可选值: "public", "restricted"][默认值: public]
+- `--bin` 创建可执行文件 `--bin <executableName>`
+- `--description` 描述 [字符串]
+- `--dependencies` 依赖，用逗号分隔 [数组]
+- `--es-module` 初始化一个转化的Es Module [布尔]
+- `--homepage` 源码地址 [字符串]
+- `--keywords` 关键字数 [数组]
+- `--license` 协议 [字符串][默认值: isc]
+- `--private` 是否私有仓库 [布尔]
+- `--registry` 源 [字符串]
+- `--tag` 发布的标签 [字符串]
+- `-y, --yes` 跳过所有的提示，使用默认配置 [布尔]
 
 ### [lerna add](https://github.com/lerna/lerna/tree/master/commands/add#readme)
 
@@ -121,7 +130,7 @@ $ lerna add <package>[@version] [--dev] [--exact] [--peer]
 
 - `--dev`
 - `--exact`
-- `--peer`
+- `--peer` 同级依赖，使用该package需要在项目中同时安装的依赖
 - `--registry <url>`
 - `--no-bootstrap` 跳过 `lerna bootstrap`，只在更改对应的 package 的 package.json 中的属性
 
@@ -153,9 +162,15 @@ lerna add babel-core
 
 将本地 package 链接在一起并安装依赖
 
-执行该命令式做了一下四件事：
+**执行该命令式做了一下四件事：**
 
-1.为每个 package 安装依赖 2.链接相互依赖的库到具体的目录，例如：如果 lerna1 下有 lerna2，且版本刚好为本地版本，那么会在 node_modules 中链接本地项目，如果版本不满足，需按正常依赖安装 3.在 bootstraped packages 中 执行 `npm run prepublish` 4.在 bootstraped packages 中 执行 `npm run prepare`
+> 1.为每个 package 安装依赖 
+
+> 2.链接相互依赖的库到具体的目录，例如：如果 lerna1 依赖 lerna2，且版本刚好为本地版本，那么会在 node_modules 中链接本地项目，如果版本不满足，需按正常依赖安装 
+
+> 3.在 bootstraped packages 中 执行 `npm run prepublish` 
+
+> 4.在 bootstraped packages 中 执行 `npm run prepare`
 
 #### Command Options
 
@@ -164,11 +179,11 @@ lerna add babel-core
 - `--ignore-prepublish` 在 bootstraped packages 中不再运行 prepublish 生命周期中的脚本 [布尔]
 - `--ignore-scripts` 在 bootstraped packages 中不再运行任何生命周期中的脚本 [布尔]
 - `--npm-client` 使用的 npm 客户端(npm, yarn, pnpm, ...) [字符串]
-- `--registry` 为 npm 设置 registry [字符串]
+- `--registry` 源 [字符串]
 - `--strict` 在 bootstrap 的过程中不允许发出警告，避免花销更长的时间或者导致其他问题 [布尔]
 - `--use-workspaces` 启用 yarn 的 workspaces 模式 [布尔]
-- `--force-local` 无论版本范围是否匹配，强制本地同级链接 [布尔] ?
-- `--contents` 子目录用作任何链接的源。必须适用于所有包装 [字符串][默认值: .] ?
+- `--force-local` 无论版本范围是否匹配，强制本地同级链接 [布尔] 
+- `--contents` 子目录用作任何链接的源。必须适用于所有包 [字符串][默认值: .] 
 
 ### [lerna link](https://github.com/lerna/lerna/tree/master/commands/link#readme)
 
@@ -359,13 +374,13 @@ lerna 不支持[过滤选项](https://www.npmjs.com/package/@lerna/filter-option
 - [`--ignore-changes`](https://github.com/lerna/lerna/tree/master/commands/version#--ignore-changes).
 - [`--include-merged-tags`](https://github.com/lerna/lerna/tree/master/commands/version#--include-merged-tags).
 
-### `lerna version`
+
 
 ### [lerna import](https://github.com/lerna/lerna/tree/master/commands/import#readme)
 
 `lerna import <path-to-external-repository>`
 
-将现有的 package 收集到 lerna 项目中。可以保留之前的原始提交作者，日期和消息将保留。
+将现有的 package 导入到 lerna 项目中。可以保留之前的原始提交作者，日期和消息将保留。
 
 **注意**：如果要在一个新的 lerna 中引入，必须至少有个 commit
 
