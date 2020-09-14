@@ -8,4 +8,4 @@ console.log('--create-release <type> 1 2 3 4 5 6')
 
 console.log('--exact 1')
 
-console.log('测试pull requests')
+console.log('测试pull requests 3')
